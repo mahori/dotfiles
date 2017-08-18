@@ -118,6 +118,7 @@
                                (company . melpa)
                                (company-irony . melpa)
                                (dired+ . melpa)
+                               (flycheck . melpa)
                                (helm-bm . melpa)
                                (helm-projectile . melpa)
                                (helm-tramp . melpa)
@@ -483,6 +484,16 @@ Tramp helm interface for ssh server and docker
 #+BEGIN_SRC emacs-lisp
   (use-package helm-tramp
     :if (eq mahori:system-name-without-domain 'rigel)
+    )
+#+END_SRC
+* 文法チェック
+** [[https://github.com/flycheck/flycheck][flycheck]]
+On-the-fly syntax checking
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :if (eq mahori:system-name-without-domain 'rigel)
+    :config
+    (global-flycheck-mode 1)
     )
 #+END_SRC
 * バージョン管理
