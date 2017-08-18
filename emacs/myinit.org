@@ -96,7 +96,6 @@
                              (pcre2el . melpa)
                              (powerline . melpa)
                              (recentf-ext . melpa)
-                             (swap-buffers . melpa)
                              (switch-window . melpa)
                              (use-package . melpa)
                              (visual-regexp . melpa)
@@ -363,13 +362,6 @@ Quickly switch windows.
     :config
     (custom-set-faces
      '(aw-leading-char-face ((t (:height 3.0)))))
-    )
-#+END_SRC
-** [[https://github.com/ekazakov/swap-buffers][swap-buffers]]
-The quickest way to swap buffers between windows. Based on switch-window package.
-#+BEGIN_SRC emacs-lisp
-  (use-package swap-buffers
-    :bind ("C-c b" . swap-buffers)
     )
 #+END_SRC
 ** [[https://github.com/dimitri/switch-window][switch-window]]
