@@ -81,7 +81,8 @@
 * パッケージをインストール
 ** 全てのマシンにインストール
 #+BEGIN_SRC emacs-lisp
-  (mahori:install-packages '((avy . melpa)
+  (mahori:install-packages '((ace-window . melpa)
+                             (avy . melpa)
                              (buffer-move . melpa)
                              (comment-dwim-2 . melpa)
                              (elscreen . melpa)
@@ -349,6 +350,16 @@ Creating and managing multiple side-by-side windows.
       )
     (setq multicolumn-min-width 120)
     (multicolumn-global-mode 1)
+    )
+#+END_SRC
+** [[https://github.com/abo-abo/ace-window][ace-window]]
+Quickly switch windows.
+#+BEGIN_SRC emacs-lisp
+  (use-package ace-window
+    :bind ("C-x o" . ace-window)
+    :config
+    (custom-set-faces
+     '(aw-leading-char-face ((t (:height 3.0)))))
     )
 #+END_SRC
 ** [[https://github.com/ekazakov/swap-buffers][swap-buffers]]
