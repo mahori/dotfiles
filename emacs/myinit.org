@@ -220,11 +220,11 @@ tree-based completion
   (use-package avy
     :bind ("M-g M-g" . avy-goto-line)
     :config
-    (when (not (mahori:main-machine-p))
-      (mykie:set-keys
-          "C-'" avy-goto-char-timer
-          "C-;" avy-goto-word-1
-          ))
+    (unless (mahori:main-machine-p)
+      (mykie:set-keys nil
+        "C-'" avy-goto-char-timer
+        "C-;" avy-goto-word-1
+        ))
     (avy-setup-default)
     )
 #+END_SRC
