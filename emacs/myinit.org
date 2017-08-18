@@ -1,0 +1,677 @@
+#+TITLE: Emacs設定ファイル
+* 初期設定
+** カスタムファイルをロード
+#+BEGIN_SRC emacs-lisp
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (when (file-exists-p custom-file)
+    (load custom-file))
+#+END_SRC
+** パッケージ
+#+BEGIN_SRC emacs-lisp
+  (defvar melpa '("melpa" . "https://melpa.org/packages/"))
+  ;; (defvar melpa-stable '("melpa-stable" . "https://stable.melpa.org/packages/"))
+  ;; (defvar marmalade '("marmalade" . "https://marmalade-repo.org/packages/"))
+  (defvar gnu '("gnu" . "https://elpa.gnu.org/packages/"))
+
+  (setq package-archives nil)
+  (add-to-list 'package-archives melpa t)
+  ;; (add-to-list 'package-archives melpa-stable t)
+  ;; (add-to-list 'package-archives marmalade t)
+  (add-to-list 'package-archives gnu t)
+
+  (defvar elpa-archives-directory (expand-file-name "elpa/archives" user-emacs-directory))
+  (defvar elpa-archives-melpa-directory (expand-file-name (car melpa) elpa-archives-directory))
+  ;; (defvar elpa-archives-melpa-stable-directory (expand-file-name (car melpa-stable) elpa-archives-directory))
+  ;; (defvar elpa-archives-marmalade-directory (expand-file-name (car marmalade) elpa-archives-directory))
+  (defvar elpa-archives-gnu-directory (expand-file-name (car gnu) elpa-archives-directory))
+
+  (unless (and (file-exists-p elpa-archives-melpa-directory)
+               ;; (file-exists-p elpa-archives-melpa-stable-directory)
+               ;; (file-exists-p elpa-archives-marmalade-directory)
+               (file-exists-p elpa-archives-gnu-directory))
+    (package-refresh-contents))
+#+END_SRC
+** 変数
+#+BEGIN_SRC emacs-lisp
+  (defvar mahori:backup-directory
+    (locate-user-emacs-file "backups"))
+
+  (defvar mahori:system-name-without-domain
+    (intern (car (split-string system-name "\\."))))
+#+END_SRC
+** 関数
+#+BEGIN_SRC emacs-lisp
+  (defun mahori:install-package (package)
+    (let ((name (car package))
+          (repo (symbol-value (cdr package))))
+      (unless (package-installed-p name)
+        (message "Installing %s from %s" name (car repo))
+        (let ((package-archives (list repo)))
+          (package-initialize)
+          (package-install name)))))
+
+  (defun mahori:install-packages (packages)
+    (mapc 'mahori:install-package
+          packages)
+    (package-initialize)
+    (delete-other-windows))
+
+  (defun mahori:main-machine-p ()
+    (memq mahori:system-name-without-domain '(sirius rigel)))
+
+  (defun mahori:starts-with-p (string1 string2)
+    (string= (substring string1 0 (min (length string1) (length string2))) string2))
+#+END_SRC
+** exec-pathに追加
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'exec-path "/usr/local/bin")
+  (add-to-list 'exec-path (expand-file-name "bin" (getenv "HOME")))
+#+END_SRC
+** 挙動を変更
+#+BEGIN_SRC emacs-lisp
+  (defalias 'yes-or-no-p 'y-or-n-p)
+  (setq-default bidi-display-reordering nil)
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 4)
+  (setq gc-cons-threshold (* 10 gc-cons-threshold))
+  (setq history-delete-duplicates t)
+  (setq history-length (* 10 history-length))
+  (setq message-log-max (* 10 message-log-max))
+#+END_SRC
+* パッケージをインストール
+** 全てのマシンにインストール
+#+BEGIN_SRC emacs-lisp
+  (mahori:install-packages '((avy . melpa)
+                             (buffer-move . melpa)
+                             (comment-dwim-2 . melpa)
+                             (elscreen . melpa)
+                             (helm . melpa)
+                             (helm-descbinds . melpa)
+                             (helm-describe-modes . melpa)
+                             (helm-swoop . melpa)
+                             (moe-theme . melpa)
+                             (multicolumn . melpa)
+                             (mykie . melpa)
+                             (pcre2el . melpa)
+                             (powerline . melpa)
+                             (recentf-ext . melpa)
+                             (swap-buffers . melpa)
+                             (switch-window . melpa)
+                             (use-package . melpa)
+                             (visual-regexp . melpa)
+                             (visual-regexp-steroids . melpa)
+                             (which-key . melpa)))
+#+END_SRC
+** メインマシン
+#+BEGIN_SRC emacs-lisp
+  (when (mahori:main-machine-p)
+    (mahori:install-packages '((avy-migemo . melpa)
+                               (ddskk . melpa)
+                               (fish-mode . melpa)
+                               (magit . melpa)
+                               (migemo . melpa))))
+#+END_SRC
+** macOS
+*** rigel
+#+BEGIN_SRC emacs-lisp
+  (when (eq mahori:system-name-without-domain 'rigel)
+    (mahori:install-packages '((bm . melpa)
+                               (company . melpa)
+                               (company-irony . melpa)
+                               (dired+ . melpa)
+                               (helm-bm . melpa)
+                               (helm-projectile . melpa)
+                               (helm-tramp . melpa)
+                               (irony . melpa)
+                               (magit-gitflow . melpa)
+                               (maxframe . melpa)
+                               (projectile . melpa))))
+#+END_SRC
+* mykie
+** mykie
+Command multiplexer: Register multiple functions to a keybind
+#+BEGIN_SRC emacs-lisp
+  (use-package mykie
+    :config
+    (mykie:initialize)
+    )
+#+END_SRC
+* Migemo
+** migemo
+Japanese incremental search through dynamic pattern expansion
+#+BEGIN_SRC emacs-lisp
+  (use-package migemo
+    :if (mahori:main-machine-p)
+    :config
+    (setq migemo-coding-system 'utf-8-unix)
+    (setq migemo-command "/usr/local/bin/cmigemo")
+    (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
+    (setq migemo-options '("-q" "--emacs"))
+    (setq migemo-regex-dictionary nil)
+    (setq migemo-user-dictionary nil)
+    (migemo-init)
+    )
+#+END_SRC
+* キー入力
+** [[https://github.com/remyferre/comment-dwim-2][comment-dwim-2]]
+An all-in-one comment command to rule them all
+#+BEGIN_SRC emacs-lisp
+  (use-package comment-dwim-2
+    :bind ("M-;" . comment-dwim-2)
+    )
+#+END_SRC
+** [[https://github.com/justbur/emacs-which-key][which-key]]
+Display available keybindings in popup
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key
+    :diminish which-key-mode
+    :config
+    (which-key-mode 1)
+    )
+#+END_SRC
+** [[https://github.com/skk-dev/ddskk][ddskk]]
+Simple Kana to Kanji conversion program.
+#+BEGIN_SRC emacs-lisp
+  (use-package skk
+    :if (mahori:main-machine-p)
+    :init
+    (setq skk-user-directory (expand-file-name "skk" user-emacs-directory))
+    )
+#+END_SRC
+* 補完
+** [[https://github.com/company-mode/company-mode][company]]
+Modular text completion framework
+#+BEGIN_SRC emacs-lisp
+  (use-package company
+    :if (eq mahori:system-name-without-domain 'rigel)
+    :diminish company-mode
+    :config
+    (add-hook 'after-init-hook 'global-company-mode)
+    )
+#+END_SRC
+** [[https://github.com/Sarcasm/irony-mode][irony]]
+C/C++ minor mode powered by libclang
+#+BEGIN_SRC emacs-lisp
+  (use-package irony
+    :if (eq mahori:system-name-without-domain 'rigel)
+    :config
+    (setq irony--server-executable (expand-file-name "irony/bin/irony-server" user-emacs-directory))
+    (add-hook 'c++-mode-hook 'irony-mode)
+    (add-hook 'c-mode-hook 'irony-mode)
+    (add-hook 'objc-mode-hook 'irony-mode)
+    (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+#+END_SRC
+** [[https://github.com/Sarcasm/company-irony][company-irony]]
+company-mode completion back-end for irony-mode
+#+BEGIN_SRC emacs-lisp
+  (use-package company-irony
+    :if (eq mahori:system-name-without-domain 'rigel)
+    :config
+    (add-to-list 'company-backends 'company-irony))
+#+END_SRC
+* カーソル
+** avy
+tree-based completion
+#+BEGIN_SRC emacs-lisp
+  (use-package avy
+    :bind ("M-g M-g" . avy-goto-line)
+    :config
+    (when (not (mahori:main-machine-p))
+      (mykie:set-keys
+          "C-'" avy-goto-char-timer
+          "C-;" avy-goto-word-1
+          ))
+    (avy-setup-default)
+    )
+#+END_SRC
+** avy-migemo
+avy with migemo
+#+BEGIN_SRC emacs-lisp
+  (use-package avy-migemo
+    :if (mahori:main-machine-p)
+    :bind (("C-'" . avy-migemo-goto-char-timer)
+           ("C-;" . avy-migemo-goto-word-1))
+    :config
+    (avy-migemo-mode 1)
+    )
+#+END_SRC
+** bm
+Visible bookmarks in buffer.
+#+BEGIN_SRC emacs-lisp
+  (use-package bm
+    :if (eq mahori:system-name-without-domain 'rigel)
+    :bind (("M-[" . bm-previous)
+           ("M-]" . bm-next))
+    :config
+    (setq-default bm-buffer-persistence t)
+    (setq bm-repository-file (expand-file-name ".bm-repository" user-emacs-directory))
+    (setq bm-restore-repository-on-load t)
+    (defun mahori:bm-find-files-in-repository ()
+      (interactive)
+      (cl-loop for (key . _) in bm-repository
+               when (file-exists-p key)
+               do (find-file-noselect key)))
+    (defun mahori:bm-repository-load-and-open ()
+      (interactive)
+      (bm-repository-load)
+      (mahori:bm-find-files-in-repository))
+    (add-hook 'after-init-hook 'mahori:bm-repository-load-and-open)
+    (defun mahori:bm-buffer-restore-safe ()
+      (ignore-errors (bm-buffer-restore)))
+    (add-hook 'find-file-hooks 'mahori:bm-buffer-restore-safe)
+    (add-hook 'kill-buffer-hook 'bm-buffer-save)
+    (defun mahori:bm-save-to-repository ()
+      (interactive)
+      (unless noninteractive
+        (bm-buffer-save-all)
+        (bm-repository-save)))
+    (add-hook 'kill-emacs-hook 'mahori:bm-save-to-repository)
+    (run-with-idle-timer 600 t 'mahori:bm-save-to-repository)
+    (add-hook 'after-revert-hook 'bm-buffer-restore)
+    (add-hook 'vc-before-checkin-hook 'bm-buffer-save)
+    (add-hook 'before-save-hook 'bm-buffer-save)
+    )
+#+END_SRC
+** helm-bm
+helm sources for bm.el
+#+BEGIN_SRC emacs-lisp
+  (use-package helm-bm
+    :if (eq mahori:system-name-without-domain 'rigel)
+    :bind ("M-SPC" . mahori:bm-toggle-or-helm)
+    :config
+    (defun mahori:bm-toggle-or-helm ()
+      (interactive)
+      (bm-toggle)
+      (when (eq last-command 'mahori:bm-toggle-or-helm)
+        (helm-bm)))
+    (setq helm-source-bm (delete '(multiline) helm-source-bm))
+    (when (mahori:main-machine-p)
+      (use-package migemo
+        :config
+        (push '(migemo) helm-source-bm)
+        )
+      )
+    )
+#+END_SRC
+* ウィンドウ
+** [[https://github.com/lukhas/buffer-move][buffer-move]]
+#+BEGIN_SRC emacs-lisp
+  (use-package buffer-move
+    :bind (("C-S-<up>" . buf-move-up)
+           ("C-S-<down>" . buf-move-down)
+           ("C-S-<left>" . buf-move-left)
+           ("C-S-<right>" . buf-move-right))
+    )
+#+END_SRC
+** [[https://github.com/knu/elscreen][elscreen]]
+Emacs window session manager
+#+BEGIN_SRC emacs-lisp
+  (use-package elscreen
+    :config
+    (elscreen-start)
+    (setq elscreen-display-tab 32)
+    (setq elscreen-tab-display-kill-screen nil)
+    (setq elscreen-tab-display-control nil)
+    ;; (setq elscreen-buffer-to-nickname-alist
+    ;;       '(("^dired-mode$" .
+    ;;          (lambda ()
+    ;;            (format "Dired(%s)" dired-directory)))
+    ;;         ("^Info-mode$" .
+    ;;          (lambda ()
+    ;;            (format "Info(%s)" (file-name-nondirectory Info-current-file))))
+    ;;         ("^mew-draft-mode$" .
+    ;;          (lambda ()
+    ;;            (format "Mew(%s)" (buffer-name (current-buffer)))))
+    ;;         ("^mew-" . "Mew")
+    ;;         ("^irchat-" . "IRChat")
+    ;;         ("^liece-" . "Liece")
+    ;;         ("^lookup-" . "Lookup")))
+    ;; (setq elscreen-mode-to-nickname-alist
+    ;;       '(("[Ss]hell" . "shell")
+    ;;         ("compilation" . "compile")
+    ;;         ("-telnet" . "telnet")
+    ;;         ("dict" . "OnlineDict")
+    ;;         ("*WL:Message*" . "Wanderlust")))
+    )
+#+END_SRC
+** [[https://github.com/Lindydancer/multicolumn][multicolumn]]
+Creating and managing multiple side-by-side windows.
+#+BEGIN_SRC emacs-lisp
+  (use-package multicolumn
+    :config
+    (mykie:set-keys multicolumn-map
+      "C-x 3"
+      :default multicolumn-delete-other-windows-and-split
+      :C-u! multicolumn-delete-other-windows-and-split-with-follow-mode
+      )
+    (setq multicolumn-min-width 120)
+    (multicolumn-global-mode 1)
+    )
+#+END_SRC
+** [[https://github.com/ekazakov/swap-buffers][swap-buffers]]
+The quickest way to swap buffers between windows. Based on switch-window package.
+#+BEGIN_SRC emacs-lisp
+  (use-package swap-buffers
+    :bind ("C-c b" . swap-buffers)
+    )
+#+END_SRC
+** [[https://github.com/dimitri/switch-window][switch-window]]
+A \*visual\* way to choose a window to switch to
+#+BEGIN_SRC emacs-lisp
+  (use-package switch-window
+    :bind (("C-t" . switch-window)
+           ("C-x o" . switch-window))
+    :config
+    (setq switch-window-shortcut-style 'qwerty)
+    )
+#+END_SRC
+** [[https://github.com/kuanyui/moe-theme.el][moe-theme]]
+#+BEGIN_SRC emacs-lisp
+  (use-package moe-theme
+    :config
+    (moe-dark)
+    )
+#+END_SRC
+** maxframe
+maximize the emacs frame based on display size
+#+BEGIN_SRC emacs-lisp
+  (use-package maxframe
+    :if (eq mahori:system-name-without-domain 'rigel)
+    :config
+    (add-hook 'window-setup-hook 'maximize-frame t)
+    )
+#+END_SRC
+* 検索
+** [[https://github.com/joddie/pcre2el][pcre2el]]
+regexp syntax converter
+#+BEGIN_SRC emacs-lisp
+  (use-package pcre2el
+    )
+#+END_SRC
+** [[https://github.com/benma/visual-regexp.el][visual-regexp]]
+A regexp/replace command for Emacs with interactive visual feedback
+#+BEGIN_SRC emacs-lisp
+  (use-package visual-regexp
+    :bind ("M-%" . vr/query-replace)
+    )
+#+END_SRC
+** [[https://github.com/benma/visual-regexp-steroids.el][visual-regexp-steroids]]
+Extends visual-regexp to support other regexp engines
+#+BEGIN_SRC emacs-lisp
+  (use-package visual-regexp-steroids
+    :config
+    (setq vr/engine 'pcre2el)
+    )
+#+END_SRC
+* モード
+** fish-mode
+Major mode for fish shell scripts
+#+BEGIN_SRC emacs-lisp
+  (use-package fish-mode
+    :if (mahori:main-machine-p)
+    )
+#+END_SRC
+** perl-mode
+#+BEGIN_SRC emacs-lisp
+  (defalias 'perl-mode 'cperl-mode)
+  (mapc
+   (lambda (pair)
+     (if (eq (cdr pair) 'perl-mode)
+         (setcdr pair 'cperl-mode)))
+   (append auto-mode-alist interpreter-mode-alist))
+#+END_SRC
+* Helm
+** helm
+Helm is an Emacs incremental and narrowing framework
+#+BEGIN_SRC emacs-lisp
+  (use-package helm
+    :diminish helm-mode helm-migemo-mode
+    :bind (("C-x C-f" . helm-for-files)
+           ("M-s o" . helm-occur)
+           ("M-x" . helm-M-x)
+           ("M-y" . helm-show-kill-ring))
+    :config
+    (setq helm-M-x-fuzzy-match t)
+    (helm-autoresize-mode 1)
+    (helm-mode 1)
+    (when (mahori:main-machine-p)
+      (helm-migemo-mode 1))
+    )
+#+END_SRC
+** helm-descbinds
+A convenient `describe-bindings' with `helm'
+#+BEGIN_SRC emacs-lisp
+  (use-package helm-descbinds
+    :config
+    (helm-descbinds-mode 1)
+    )
+#+END_SRC
+** helm-describe-modes
+Helm interface to major and minor modes.
+#+BEGIN_SRC emacs-lisp
+  (use-package helm-describe-modes
+    :config
+    (global-set-key [remap describe-mode] #'helm-describe-modes)
+    )
+#+END_SRC
+** helm-swoop
+Efficiently hopping squeezed lines powered by helm interface
+#+BEGIN_SRC emacs-lisp
+  (use-package helm-swoop
+    :config
+    (mykie:set-keys nil
+      "C-s"
+      :default isearch-forward
+      :C-u! helm-swoop
+      )
+    (mykie:set-keys helm-swoop-map
+      "C-r" helm-previous-line
+      "C-s" helm-next-line
+      )
+    )
+#+END_SRC
+** helm-tramp
+Tramp helm interface for ssh server and docker
+#+BEGIN_SRC emacs-lisp
+  (use-package helm-tramp
+    :if (eq mahori:system-name-without-domain 'rigel)
+    )
+#+END_SRC
+* バージョン管理
+** [[https://github.com/magit/magit][magit]]
+A Git porcelain inside Emacs
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :if (mahori:main-machine-p)
+    )
+#+END_SRC
+** [[https://github.com/jtatarik/magit-gitflow][magit-gitflow]]
+gitflow extension for magit
+#+BEGIN_SRC emacs-lisp
+  (use-package magit-gitflow
+    :if (eq mahori:system-name-without-domain 'rigel)
+    :config
+    (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+    )
+#+END_SRC
+* ファイラ
+** [[https://www.emacswiki.org/emacs/DiredPlus][dired+]]
+Extensions to Dired.
+#+BEGIN_SRC emacs-lisp
+  (use-package dired+
+    :if (eq mahori:system-name-without-domain 'rigel)
+    :config
+    (mykie:set-keys dired-mode-map
+      "e"
+      :default wdired-change-to-wdired-mode
+      )
+    (setq dired-dwim-target t)
+    (setq wdired-allow-to-change-permissions t)
+    (let ((gls "/usr/local/bin/gls"))
+      (when (file-exists-p gls)
+        (setq insert-directory-program gls)))
+    )
+#+END_SRC
+* プロジェクト管理
+** [[https://github.com/bbatsov/projectile][projectile]]
+Manage and navigate projects in Emacs easily
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :if (eq mahori:system-name-without-domain 'rigel)
+    :config
+    (setq projectile-tags-command "/usr/local/opt/ctags/bin/ctags -Re -f \"%s\" %s")
+    (projectile-mode 1)
+    )
+#+END_SRC
+** [[https://github.com/bbatsov/helm-projectile][helm-projectile]]
+Helm integration for Projectile
+#+BEGIN_SRC emacs-lisp
+  (use-package helm-projectile
+    :if (eq mahori:system-name-without-domain 'rigel)
+    :config
+    (setq projectile-completion-system 'helm)
+    (helm-projectile-on)
+    )
+#+END_SRC
+* その他
+** powerline
+Rewrite of Powerline
+#+BEGIN_SRC emacs-lisp
+  (use-package powerline
+    :config
+    (powerline-moe-theme)
+    )
+#+END_SRC
+** recentf-ext
+Recentf extensions
+#+BEGIN_SRC emacs-lisp
+  (use-package recentf-ext
+    :config
+    (setq recentf-exclude '("/TAGS$" "/var/tmp/"))
+    (setq recentf-max-saved-items (* 10 recentf-max-saved-items))
+    (recentf-mode 1)
+    )
+#+END_SRC
+** bs
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x C-b") 'bs-show)
+#+END_SRC
+** files
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'backup-directory-alist
+               (cons "." mahori:backup-directory))
+  (setq auto-save-file-name-transforms
+        `((".*" ,mahori:backup-directory t)))
+  (defun mahori:dont-backup-commit-files-p (filename)
+    (let ((filename-part (file-name-nondirectory filename)))
+      (if (mahori:starts-with-p filename-part "svn-commit")
+          nil
+        (normal-backup-enable-predicate filename))))
+  (setq backup-enable-predicate 'mahori:dont-backup-commit-files-p)
+  (setq view-read-only t)
+#+END_SRC
+** generic-x
+#+BEGIN_SRC emacs-lisp
+  (use-package generic-x
+    )
+#+END_SRC
+** hl-line
+#+BEGIN_SRC emacs-lisp
+  (global-hl-line-mode 1)
+#+END_SRC
+** linum
+#+BEGIN_SRC emacs-lisp
+  (global-linum-mode 1)
+  (setq linum-format "%4d| ")
+#+END_SRC
+** paren
+#+BEGIN_SRC emacs-lisp
+  (show-paren-mode 1)
+#+END_SRC
+** savehist
+#+BEGIN_SRC emacs-lisp
+  (savehist-mode 1)
+#+END_SRC
+** saveplace
+#+BEGIN_SRC emacs-lisp
+  (save-place-mode 1)
+#+END_SRC
+** tramp
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'backup-directory-alist
+               (cons tramp-file-name-regexp nil))
+#+END_SRC
+** uniquify
+#+BEGIN_SRC emacs-lisp
+  (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+  (setq uniquify-ignore-buffers-re "[^*]+")
+#+END_SRC
+** view
+#+BEGIN_SRC emacs-lisp
+  (use-package view
+    :bind (:map view-mode-map
+                ("N" . View-search-last-regexp-backward)
+                ("?" . View-search-regexp-backward)
+                ("G" . View-goto-line-last)
+                ("b" . View-scroll-page-backward)
+                ("f" . View-scroll-page-forward)
+                ("h" . backward-char)
+                ("j" . next-line)
+                ("k" . previous-line)
+                ("l" . forward-char)
+                ("J" . View-scroll-line-forward)
+                ("K" . View-scroll-line-backward)
+                ("m" . bm-toggle)
+                ("[" . bm-previous)
+                ("]" . bm-next))
+    )
+#+END_SRC
+** cua-base
+#+BEGIN_SRC emacs-lisp
+  (when (eq mahori:system-name-without-domain 'rigel)
+    (setq cua-enable-cua-keys nil)
+    (cua-mode 1))
+#+END_SRC
+** faces
+#+BEGIN_SRC emacs-lisp
+  (when (eq mahori:system-name-without-domain 'rigel)
+    (set-face-attribute 'default nil :family "Ricty Diminished" :height 160))
+#+END_SRC
+** mwheel
+#+BEGIN_SRC emacs-lisp
+  (when (eq mahori:system-name-without-domain 'rigel)
+    (setq mouse-wheel-scroll-amount '(1 ((shift) . 2) ((control))))
+    (setq mouse-wheel-progressive-speed nil))
+#+END_SRC
+** ns-win
+#+BEGIN_SRC emacs-lisp
+  (when (eq mahori:system-name-without-domain 'rigel)
+    (setq ns-pop-up-frames nil))
+#+END_SRC
+** scroll-bar
+#+BEGIN_SRC emacs-lisp
+  (when (eq mahori:system-name-without-domain 'rigel)
+    (scroll-bar-mode 0))
+#+END_SRC
+** startup
+#+BEGIN_SRC emacs-lisp
+  (when (eq mahori:system-name-without-domain 'rigel)
+    (setq inhibit-startup-screen t))
+#+END_SRC
+** tool-bar
+#+BEGIN_SRC emacs-lisp
+  (when (eq mahori:system-name-without-domain 'rigel)
+    (tool-bar-mode 0))
+#+END_SRC
+** C source code
+#+BEGIN_SRC emacs-lisp
+  (when (eq mahori:system-name-without-domain 'rigel)
+    (setq-default line-spacing 2)
+    ;; (setq default-frame-alist '((width . 280) (height . 80)))
+    ;; (setq frame-title-format "%f")
+    (setq ns-alternate-modifier 'meta)
+    (setq ns-command-modifier 'super)
+    (setq ns-function-modifier 'none)
+    (setq scroll-preserve-screen-position 'always)
+    (setq visible-bell t))
+#+END_SRC
