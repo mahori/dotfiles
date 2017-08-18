@@ -119,6 +119,7 @@
                                (company-irony . melpa)
                                (dired+ . melpa)
                                (flycheck . melpa)
+                               (flycheck-irony . melpa)
                                (helm-bm . melpa)
                                (helm-projectile . melpa)
                                (helm-tramp . melpa)
@@ -494,6 +495,15 @@ On-the-fly syntax checking
     :if (eq mahori:system-name-without-domain 'rigel)
     :config
     (global-flycheck-mode 1)
+    )
+#+END_SRC
+** [[https://github.com/Sarcasm/flycheck-irony][flycheck-irony]]
+Flycheck: C/C++ support via Irony
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck-irony
+    :if (eq mahori:system-name-without-domain 'rigel)
+    :config
+    (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
     )
 #+END_SRC
 * バージョン管理
