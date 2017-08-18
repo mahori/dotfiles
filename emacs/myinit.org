@@ -96,7 +96,6 @@
                              (pcre2el . melpa)
                              (powerline . melpa)
                              (recentf-ext . melpa)
-                             (switch-window . melpa)
                              (use-package . melpa)
                              (visual-regexp . melpa)
                              (visual-regexp-steroids . melpa)
@@ -362,16 +361,6 @@ Quickly switch windows.
     :config
     (custom-set-faces
      '(aw-leading-char-face ((t (:height 3.0)))))
-    )
-#+END_SRC
-** [[https://github.com/dimitri/switch-window][switch-window]]
-A \*visual\* way to choose a window to switch to
-#+BEGIN_SRC emacs-lisp
-  (use-package switch-window
-    :bind (("C-t" . switch-window)
-           ("C-x o" . switch-window))
-    :config
-    (setq switch-window-shortcut-style 'qwerty)
     )
 #+END_SRC
 ** [[https://github.com/kuanyui/moe-theme.el][moe-theme]]
