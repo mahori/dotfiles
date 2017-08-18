@@ -125,7 +125,8 @@
                                (irony . melpa)
                                (magit-gitflow . melpa)
                                (maxframe . melpa)
-                               (projectile . melpa))))
+                               (projectile . melpa)
+                               (yasnippet . melpa))))
 #+END_SRC
 * mykie
 ** mykie
@@ -421,6 +422,16 @@ Major mode for fish shell scripts
      (if (eq (cdr pair) 'perl-mode)
          (setcdr pair 'cperl-mode)))
    (append auto-mode-alist interpreter-mode-alist))
+#+END_SRC
+* スニペット
+** [[https://github.com/joaotavora/yasnippet][yasnippet]]
+Yet another snippet extension for Emacs.
+#+BEGIN_SRC emacs-lisp
+  (use-package yasnippet
+    :if (eq mahori:system-name-without-domain 'rigel)
+    :config
+    (yas-global-mode 1)
+    )
 #+END_SRC
 * Helm
 ** helm
