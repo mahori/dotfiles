@@ -176,6 +176,8 @@ Simple Kana to Kanji conversion program.
     :if (mahori:main-machine-p)
     :init
     (setq skk-user-directory (expand-file-name "skk" user-emacs-directory))
+    :config
+    (setq default-input-method "japanese-skk")
     )
 #+END_SRC
 * 補完
