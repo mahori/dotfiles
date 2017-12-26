@@ -126,7 +126,6 @@
                                (irony . melpa)
                                (magit-gitflow . melpa)
                                (maxframe . melpa)
-                               (org-bullets . melpa)
                                (projectile . melpa)
                                (yasnippet . melpa))))
 #+END_SRC
@@ -561,16 +560,6 @@ Helm integration for Projectile
     :config
     (setq projectile-completion-system 'helm)
     (helm-projectile-on)
-    )
-#+END_SRC
-* Org
-** [[https://github.com/emacsorphanage/org-bullets][org-bullets]]
-Show bullets in org-mode as UTF-8 characters
-#+BEGIN_SRC emacs-lisp
-  (use-package org-bullets
-    :if (eq mahori:system-name-without-domain 'rigel)
-    :config
-    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
     )
 #+END_SRC
 * その他
