@@ -125,7 +125,6 @@
                                (helm-tramp . melpa)
                                (irony . melpa)
                                (magit-gitflow . melpa)
-                               (maxframe . melpa)
                                (projectile . melpa)
                                (yasnippet . melpa))))
 #+END_SRC
@@ -370,15 +369,6 @@ Quickly switch windows.
   (use-package moe-theme
     :config
     (moe-dark)
-    )
-#+END_SRC
-** maxframe
-maximize the emacs frame based on display size
-#+BEGIN_SRC emacs-lisp
-  (use-package maxframe
-    :if (eq mahori:system-name-without-domain 'rigel)
-    :config
-    (add-hook 'window-setup-hook 'maximize-frame t)
     )
 #+END_SRC
 * 検索
