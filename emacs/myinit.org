@@ -165,7 +165,6 @@ An all-in-one comment command to rule them all
 Display available keybindings in popup
 #+BEGIN_SRC emacs-lisp
   (use-package which-key
-    :diminish which-key-mode
     :config
     (which-key-mode 1)
     )
@@ -187,7 +186,6 @@ Modular text completion framework
 #+BEGIN_SRC emacs-lisp
   (use-package company
     :if (eq mahori:system-name-without-domain 'rigel)
-    :diminish company-mode
     :config
     (add-hook 'after-init-hook 'global-company-mode)
     )
@@ -425,7 +423,6 @@ Yet another snippet extension for Emacs.
 Helm is an Emacs incremental and narrowing framework
 #+BEGIN_SRC emacs-lisp
   (use-package helm
-    :diminish helm-mode helm-migemo-mode
     :bind (("C-x C-f" . helm-for-files)
            ("M-s o" . helm-occur)
            ("M-x" . helm-M-x)
