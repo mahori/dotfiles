@@ -686,7 +686,7 @@ Recentf extensions
 #+BEGIN_SRC emacs-lisp
   (when (eq mahori:system-name-without-domain 'rigel)
     (setq-default line-spacing 2)
-    ;; (setq default-frame-alist '((width . 280) (height . 80)))
+    (setq default-frame-alist '((width . 120) (height . 50)))
     ;; (setq frame-title-format "%f")
     (setq ns-alternate-modifier 'meta)
     (setq ns-command-modifier 'super)
