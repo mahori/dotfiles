@@ -1,14 +1,10 @@
-.bm-repository
-backups/
-custom.el
-history
-irony/
-myinit.el
-network-security.data
-places
-projectile-bookmarks.eld
-recentf
-skk/
+/.bm-repository
+/custom.el
+/history
+/network-security.data
+/recentf
+/skk/*
+!/skk/init
 
 # Created by https://www.gitignore.io/api/emacs
 
@@ -55,8 +51,27 @@ flycheck_*.el
 
 # projectiles files
 .projectile
+projectile-bookmarks.eld
 
 # directory configuration
 .dir-locals.el
+
+# saveplace
+places
+
+# url cache
+url/cache/
+
+# cedet
+ede-projects.el
+
+# smex
+smex-items
+
+# company-statistics
+company-statistics-cache.el
+
+# anaconda-mode
+anaconda-mode/
 
 # End of https://www.gitignore.io/api/emacs
