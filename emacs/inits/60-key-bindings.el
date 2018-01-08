@@ -9,6 +9,8 @@
            ("M-%" . vr/query-replace)                    ; query-replace
            ("M-[" . bm-previous)
            ("M-]" . bm-next)
+           ("<f5>" . point-undo)
+           ("S-<f5>" . point-redo)
            ([remap comment-dwim] . comment-dwim-2)
            ([remap describe-mode] . helm-describe-modes)
            ([remap other-window] . ace-window))
