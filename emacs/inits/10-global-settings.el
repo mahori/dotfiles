@@ -9,7 +9,7 @@
 (setq history-length (* 10 history-length))
 (setq message-log-max (* 10 message-log-max))
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-(setq uniquify-ignore-buffers-re "[^*]+")
+(setq uniquify-ignore-buffers-re "*[^*]+*")
 (setq view-read-only t)
 
 (global-hl-line-mode 1)
