@@ -1,5 +1,6 @@
 (use-package yasnippet
   :ensure t
+  :delight yas-minor-mode
   :config
   (yas-global-mode 1)
   )

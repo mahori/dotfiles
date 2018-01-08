@@ -1,3 +1,7 @@
+(use-package delight
+  :ensure t
+  )
+
 (use-package migemo
   :ensure t
   :config
@@ -12,6 +16,8 @@
 
 (use-package helm-config
   :ensure helm
+  :delight helm-mode
+  :delight helm-migemo-mode
   :config
   (setq helm-M-x-fuzzy-match t)
   (helm-mode 1)
