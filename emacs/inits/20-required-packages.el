@@ -25,14 +25,18 @@
   (helm-migemo-mode 1)
   )
 
-(use-package mykie
+(use-package bind-key
   :ensure t
-  :config
-  (mykie:initialize)
   )
 
 (use-package key-chord
   :ensure t
   :config
   (key-chord-mode 1)
+  )
+
+(use-package mykie
+  :ensure t
+  :config
+  (mykie:initialize)
   )
