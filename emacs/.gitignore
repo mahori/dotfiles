@@ -2,6 +2,7 @@
 /custom.el
 /history
 /network-security.data
+/projectile.cache
 /recentf
 /skk/*
 !/skk/init

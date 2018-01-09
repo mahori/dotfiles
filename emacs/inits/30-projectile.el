@@ -2,6 +2,7 @@
   :ensure t
   :config
   (setq projectile-tags-command "/usr/local/opt/ctags/bin/ctags -Re -f \"%s\" %s")
+  (setq projectile-enable-caching t)
   (projectile-mode 1)
   )
 
