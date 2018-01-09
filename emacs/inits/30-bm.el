@@ -26,6 +26,8 @@
 
 (use-package bm
   :ensure t
+  :bind (("M-[" . bm-previous)
+         ("M-]" . bm-next))
   :config
   (setq-default bm-buffer-persistence t)
   (setq bm-repository-file (expand-file-name ".bm-repository" user-emacs-directory))
@@ -45,4 +47,9 @@
   :config
   (setq helm-source-bm (delete '(multiline) helm-source-bm))
   (push '(migemo) helm-source-bm)
+  (mykie:set-keys nil
+    "M-SPC"                               ; just-one-space
+    :default mahori:bm-toggle-or-helm
+    :C-u! just-one-space
+    )
   )

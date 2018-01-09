@@ -19,10 +19,6 @@
 (bind-keys :map dired-mode-map
            ("e" . wdired-change-to-wdired-mode))
 
-(bind-keys :map helm-swoop-map
-           ("C-r" . helm-previous-line)
-           ("C-s" . helm-next-line))
-
 (bind-keys :map view-mode-map
            ("N" . View-search-last-regexp-backward)
            ("?" . View-search-regexp-backward)
@@ -39,14 +35,8 @@
            ("[" . bm-previous)
            ("]" . bm-next))
 
-(key-chord-define-global "ho" 'helm-occur)
-(key-chord-define-global "hs" 'helm-swoop)
-
 (mykie:set-keys nil
   ;; "C-s"                                 ; isearch-forward
   ;; :default isearch-forward
   ;; :C-u! helm-swoop
-  "M-SPC"                               ; just-one-space
-  :default mahori:bm-toggle-or-helm
-  :C-u! just-one-space
-  )
+ )

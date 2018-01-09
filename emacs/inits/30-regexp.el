@@ -4,6 +4,7 @@
 
 (use-package visual-regexp
   :ensure t
+  :bind ("M-%" . vr/query-replace)      ; query-replace
   )
 
 (use-package visual-regexp-steroids
