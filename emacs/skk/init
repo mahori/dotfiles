@@ -1,6 +1,7 @@
 ;; -*- emacs-lisp -*-
 
 (require 'skk-study)
+(setq skk-dcomp-activate t)
 (setq skk-japanese-message-and-error t)
 (setq skk-large-jisyo (expand-file-name "SKK-JISYO.L" skk-user-directory))
 (setq skk-search-katakana t)
