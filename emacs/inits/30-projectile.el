@@ -1,8 +1,9 @@
 (use-package projectile
   :ensure t
   :config
-  (setq projectile-tags-command "/usr/local/opt/ctags/bin/ctags -Re -f \"%s\" %s")
   (setq projectile-enable-caching t)
+  (setq projectile-tags-command "gtags")
+  (setq projectile-tags-file-name "GTAGS")
   (projectile-mode 1)
   )
 
