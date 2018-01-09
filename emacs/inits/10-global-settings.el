@@ -8,6 +8,7 @@
 (setq history-delete-duplicates t)
 (setq history-length (* 10 history-length))
 (setq message-log-max (* 10 message-log-max))
+(setq set-mark-command-repeat-pop t)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq uniquify-ignore-buffers-re "*[^*]+*")
 (setq view-read-only t)
