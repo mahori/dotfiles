@@ -4,6 +4,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
+(setq cua-enable-cua-keys nil)
 (setq gc-cons-threshold (* 10 gc-cons-threshold))
 (setq history-delete-duplicates t)
 (setq history-length (* 10 history-length))
@@ -13,6 +14,7 @@
 (setq uniquify-ignore-buffers-re "*[^*]+*")
 (setq view-read-only t)
 
+(cua-mode 1)
 (global-hl-line-mode 1)
 (global-linum-mode 1)
 (save-place-mode 1)
