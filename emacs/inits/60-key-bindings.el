@@ -1,4 +1,5 @@
-(bind-keys ("C-x C-b" . bs-show)                         ; list-buffers
+(bind-keys ("C-@" . hippie-expand)
+           ("C-x C-b" . bs-show)                         ; list-buffers
            ("C-x C-f" . helm-for-files )                 ; find-file
            ("M-g M-c" . avy-migemo-goto-char-timer)
            ("M-g M-l" . avy-goto-line)
