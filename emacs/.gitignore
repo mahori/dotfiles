@@ -5,6 +5,7 @@
 /projectile.cache
 /recentf
 /skk/*
+/undohist/
 !/skk/init
 
 # Created by https://www.gitignore.io/api/emacs
