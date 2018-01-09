@@ -1,6 +1,6 @@
 (use-package git-gutter-fringe
   :ensure t
-  :delight git-gutter-mode
+  :diminish git-gutter-mode
   :config
   (global-git-gutter-mode)
   (git-gutter:linum-setup)

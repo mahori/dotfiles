@@ -1,6 +1,6 @@
 (use-package which-key
   :ensure t
-  :delight
+  :diminish
   :config
   (which-key-mode 1)
   )

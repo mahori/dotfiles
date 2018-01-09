@@ -1,4 +1,4 @@
 (use-package magit
   :ensure t
-  :delight auto-revert-mode
+  :diminish auto-revert-mode
   )

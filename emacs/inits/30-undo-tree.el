@@ -1,6 +1,6 @@
 (use-package undo-tree
   :ensure t
-  :delight
+  :diminish
   :config
   (global-undo-tree-mode)
   )

@@ -1,6 +1,6 @@
 (use-package company
   :ensure t
-  :delight
+  :diminish
   :config
   (add-hook 'after-init-hook 'global-company-mode)
   )
