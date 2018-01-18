@@ -24,7 +24,6 @@
 (add-to-list 'backup-directory-alist (cons "." mahori:backup-directory))
 (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil))
 (setq auto-save-file-name-transforms `((".*" ,mahori:backup-directory t)))
-(setq backup-enable-predicate 'mahori:dont-backup-commit-files-p)
 
 (setq hippie-expand-try-functions-list
       '(try-complete-file-name-partially
@@ -37,7 +36,7 @@
         try-expand-dabbrev-from-kill
         ;; try-complete-lisp-symbol-partially
         ;; try-complete-lisp-symbol
-        )
+        ))
 
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path (expand-file-name "bin" (getenv "HOME")))

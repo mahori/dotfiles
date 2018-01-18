@@ -1,5 +1,11 @@
 (use-package flycheck
   :ensure t
+  :hook (cperl-mode . flycheck-mode)
   :config
-  (global-flycheck-mode 1)
+  (use-package flycheck-pos-tip
+    :ensure t
+    :config
+    (flycheck-pos-tip-mode)
+    )
+  (add-hook 'c-mode-common-hook 'flycheck-mode)
   )

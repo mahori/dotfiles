@@ -1,2 +1,2 @@
-(defvar mahori:backup-directory
-  (locate-user-emacs-file "backups"))
+(defconst mahori:backup-directory
+  (expand-file-name "backups/" user-emacs-directory))

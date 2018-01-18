@@ -1,4 +1,4 @@
 (use-package comment-dwim-2
   :ensure t
-  :bind ([remap comment-dwim] . comment-dwim-2)
+  :bind ("M-;" . comment-dwim-2)        ; comment-dwim
   )
