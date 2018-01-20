@@ -74,10 +74,17 @@ grc_options_du='-h'
 grc_options_ls='-CFw'
 zplug "mahori/zsh-grc", use:grc.zsh
 
-# solarized-powerline
-export SP_DISABLE_VIRTUAL_ENV_PROMPT='true'
-export SP_DISABLE_VI_INDICATOR='true'
-zplug "houjunchen/solarized-powerline", as:theme
+# theme
+if [ -n "${INSIDE_EMACS}" ]
+then
+    # rawsyntax
+    zplug "rawsyntax/7310990", from:gist, as:theme
+else
+    # solarized-powerline
+    export SP_DISABLE_VIRTUAL_ENV_PROMPT='true'
+    export SP_DISABLE_VI_INDICATOR='true'
+    zplug "houjunchen/solarized-powerline", as:theme
+fi
 
 # zaw
 zplug "zsh-users/zaw"
