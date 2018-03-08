@@ -1,7 +1,7 @@
 (use-package smex
   :ensure t
-  :bind (("M-x" . smex)                      ; execute-extended-command
-         ("M-X" . smex-major-mode-commands))
+  :bind (("C-c x" . smex)
+         ("C-c X" . smex-major-mode-commands))
   :config
   (smex-initialize)
   )
