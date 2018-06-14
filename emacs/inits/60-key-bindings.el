@@ -1,5 +1,4 @@
-(bind-keys ("C-@"     . hippie-expand)
-           ("C-c a"   . align)
+(bind-keys ("C-c a"   . align)
            ("C-x C-b" . bs-show))       ; list-buffers
 
 (bind-keys :map dired-mode-map
