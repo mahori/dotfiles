@@ -6,6 +6,7 @@ export PATH="${HOME}/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:
 case ${UID} in
     0)
         export LANG='en_US.UTF-8'
+        export LOGNAME="$(id -u -n)"
         ;;
     *)
         export LANG='ja_JP.UTF-8'
