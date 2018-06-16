@@ -1,4 +1,5 @@
 (use-package git-gutter-fringe
+  :if window-system
   :ensure t
   :diminish git-gutter-mode
   :config
