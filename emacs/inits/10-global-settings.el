@@ -15,8 +15,8 @@
 (setq view-read-only t)
 
 (cua-mode 1)
+(global-display-line-numbers-mode 1)
 (global-hl-line-mode 1)
-(global-linum-mode 1)
 (save-place-mode 1)
 (savehist-mode 1)
 (show-paren-mode 1)
