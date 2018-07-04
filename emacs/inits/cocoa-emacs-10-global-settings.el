@@ -6,7 +6,7 @@
 (setq scroll-preserve-screen-position 'always)
 (setq visible-bell t)
 
-(set-face-attribute 'default nil :family "Ricty" :height 160)
+(set-face-attribute 'default nil :family "Ricty Discord" :height 160)
 
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
