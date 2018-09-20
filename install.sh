@@ -7,14 +7,6 @@ ln -s $PWD/emacs $HOME/.emacs.d
 # tmux
 echo 'tmux'
 ln -s $PWD/tmux.conf $HOME/.tmux.conf
-case "$(uname -s)" in
-    Darwin)
-        mkdir $HOME/.tmux
-        ln -s $PWD/tmux/darwin.conf $HOME/.tmux/darwin.conf
-        ;;
-    *)
-        ;;
-esac
 
 # vim
 echo 'vim'
