@@ -11,9 +11,3 @@
   :ensure t
   :config
   (add-to-list 'company-backends 'company-irony))
-
-(use-package flycheck-irony
-  :ensure t
-  :config
-  (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
-  )
