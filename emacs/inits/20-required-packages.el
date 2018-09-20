@@ -1,5 +1,5 @@
 (use-package migemo
-  :ensure t
+  :straight t
   :config
   (setq migemo-coding-system 'utf-8-unix)
   (setq migemo-command "/usr/local/bin/cmigemo")

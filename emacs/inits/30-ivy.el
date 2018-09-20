@@ -1,5 +1,5 @@
 (use-package counsel
-  :ensure t
+  :straight t
   :bind (("C-c g"   . counsel-ag)
          ("C-c r"   . counsel-recentf)
          ("C-s"     . swiper)                     ; isearch-forward
@@ -16,13 +16,13 @@
   )
 
 (use-package avy-migemo-e.g.ivy
-  :ensure avy-migemo
+  :straight avy-migemo
   )
 
 (use-package avy-migemo-e.g.swiper
-  :ensure avy-migemo
+  :straight avy-migemo
   )
 
 (use-package avy-migemo-e.g.counsel
-  :ensure avy-migemo
+  :straight avy-migemo
   )
