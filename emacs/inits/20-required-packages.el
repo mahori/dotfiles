@@ -1,7 +1,3 @@
-(use-package diminish
-  :ensure t
-  )
-
 (use-package migemo
   :ensure t
   :config

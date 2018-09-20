@@ -1,6 +1,5 @@
 (use-package counsel
   :ensure t
-  :diminish ivy-mode
   :bind (("C-c g"   . counsel-ag)
          ("C-c r"   . counsel-recentf)
          ("C-s"     . swiper)                     ; isearch-forward

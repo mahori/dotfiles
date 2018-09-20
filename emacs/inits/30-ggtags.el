@@ -1,6 +1,5 @@
 (use-package ggtags
   :ensure t
-  :diminish
   :config
   (defun mahori:ggtags-hook ()
     (ggtags-mode 1)
