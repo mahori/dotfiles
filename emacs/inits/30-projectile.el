@@ -1,5 +1,5 @@
 (use-package projectile
-  :ensure t
+  :straight t
   :config
   (setq projectile-completion-system 'ivy)
   (setq projectile-enable-caching t)
@@ -9,6 +9,6 @@
   )
 
 (use-package counsel-projectile
-  :ensure t
+  :straight t
   :bind ("C-c [" . counsel-projectile)
   )

@@ -1,10 +1,10 @@
 (use-package yasnippet
-  :ensure t
+  :straight t
   :commands yas-minor-mode
   :hook ((c-mode-common emacs-lisp-mode org-mode cperl-mode) . yas-minor-mode)
   )
 
 (use-package yasnippet-snippets
-  :ensure t
+  :straight t
   :after yasnippet
   )

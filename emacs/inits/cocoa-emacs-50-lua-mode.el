@@ -1,5 +1,5 @@
 (use-package lua-mode
-  :ensure t
+  :straight t
   :config
   (setq lua-indent-level 2)
   )
