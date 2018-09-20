@@ -29,6 +29,5 @@ esac
 
 # zsh
 echo 'zsh'
-ln -s $PWD/zshenv $HOME/.zshenv
 ln -s $PWD/zshrc $HOME/.zshrc
 ln -s $PWD/zsh $HOME/.zsh
