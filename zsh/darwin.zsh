@@ -11,15 +11,6 @@ case ${UID} in
         export LANG='en_US.UTF-8'
         export LOGNAME="$(id -u -n)"
         ;;
-    10211)
-        export LANG='en_US.UTF-8'
-        export LOGNAME="$(id -u -n)"
-
-        if (( ${+commands[rbenv]} ))
-        then
-            eval "$(rbenv init -)"
-        fi
-        ;;
     *)
         export LANG='ja_JP.UTF-8'
         ;;
