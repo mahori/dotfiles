@@ -1,5 +1,6 @@
 (use-package projectile
   :straight t
+  :bind-keymap ("C-c p" . projectile-command-map)
   :config
   (setq projectile-completion-system 'ivy)
   (setq projectile-enable-caching t)
