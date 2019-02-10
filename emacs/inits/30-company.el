@@ -1,5 +1,5 @@
 (use-package company
-  :straight t
+  :ensure t
   :config
   (global-company-mode)
   )

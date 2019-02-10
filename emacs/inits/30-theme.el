@@ -1,9 +1,9 @@
 (use-package powerline
-  :straight t
+  :ensure t
   )
 
 (use-package moe-theme
-  :straight t
+  :ensure t
   :config
   (moe-dark)
   (powerline-moe-theme)

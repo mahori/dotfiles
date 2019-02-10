@@ -1,14 +1,14 @@
 (use-package pcre2el
-  :straight t
+  :ensure t
   )
 
 (use-package visual-regexp
-  :straight t
+  :ensure t
   :bind ("M-%" . vr/query-replace)      ; query-replace
   )
 
 (use-package visual-regexp-steroids
-  :straight t
+  :ensure t
   :config
   (setq vr/engine 'pcre2el)
   )

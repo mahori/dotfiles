@@ -1,4 +1,4 @@
 (use-package zop-to-char
-  :straight t
+  :ensure t
   :bind ("M-z" . zop-up-to-char)        ; zap-to-char
   )

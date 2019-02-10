@@ -1,5 +1,5 @@
 (use-package which-key
-  :straight t
+  :ensure t
   :config
   (which-key-mode 1)
   )

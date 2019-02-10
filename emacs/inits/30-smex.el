@@ -1,5 +1,5 @@
 (use-package smex
-  :straight t
+  :ensure t
   :config
   (smex-initialize)
   )
