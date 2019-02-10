@@ -19,6 +19,7 @@ esac
 alias ll='ls -AlO'
 
 source /usr/local/etc/profile.d/colorsvn-env.sh
+source ${HOME}/.zsh/emacs.zsh
 if [[ -r ${HOME}/.zsh/GitHub.zsh ]]
 then
     source ${HOME}/.zsh/GitHub.zsh
