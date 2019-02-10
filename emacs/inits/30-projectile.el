@@ -1,5 +1,5 @@
 (use-package projectile
-  :straight t
+  :ensure t
   :bind-keymap ("C-c p" . projectile-command-map)
   :config
   (setq projectile-completion-system 'ivy)
@@ -10,6 +10,6 @@
   )
 
 (use-package counsel-projectile
-  :straight t
+  :ensure t
   :bind ("C-c [" . counsel-projectile)
   )

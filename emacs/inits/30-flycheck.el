@@ -1,11 +1,11 @@
 (use-package flycheck
-  :straight t
+  :ensure t
   :commands flycheck-mode
   :hook (cperl-mode . flycheck-mode)
   )
 
 (use-package flycheck-pos-tip
-  :straight t
+  :ensure t
   :after flycheck
   :commands flycheck-pos-tip-mode
   :hook (flycheck-mode . flycheck-pos-tip-mode)

@@ -1,5 +1,5 @@
 (use-package undo-tree
-  :straight t
+  :ensure t
   :config
   (global-undo-tree-mode)
   )

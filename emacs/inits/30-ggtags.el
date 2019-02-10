@@ -4,7 +4,7 @@
               (cons 'ggtags-try-complete-tag hippie-expand-try-functions-list)))
 
 (use-package ggtags
-  :straight t
+  :ensure t
   :commands (ggtags-mode mahori:ggtags-hook)
   :hook ((c-mode-common cperl-mode) . mahori:ggtags-hook)
   )

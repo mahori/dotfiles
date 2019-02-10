@@ -1,3 +1,3 @@
 (use-package cmake-mode
-  :straight t
+  :ensure t
   )
