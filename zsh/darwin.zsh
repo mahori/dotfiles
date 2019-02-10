@@ -18,6 +18,11 @@ esac
 
 alias ll='ls -AlO'
 
+if brew command command-not-found-init > /dev/null 2>&1
+then
+    eval "$(brew command-not-found-init)";
+fi
+
 source /usr/local/etc/profile.d/colorsvn-env.sh
 source ${HOME}/.zsh/emacs.zsh
 if [[ -r ${HOME}/.zsh/GitHub.zsh ]]
