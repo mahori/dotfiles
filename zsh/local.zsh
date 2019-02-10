@@ -1,3 +1,4 @@
+export EDITOR=emacs
 export HISTFILE="${HOME}/.zsh/history"
 export HISTSIZE=50000
 export LSCOLORS=exFxCxdxBxegedabagacad
