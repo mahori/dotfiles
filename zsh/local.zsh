@@ -55,6 +55,9 @@ fi
 source ${ZPLUG_HOME}/repos/zplug/zplug/init.zsh
 export PATH="${ZPLUG_BIN}:${PATH}"
 
+# emacs
+zplug "plugins/emacs", from:oh-my-zsh
+
 # fasd
 export _FASD_DATA="${HOME}/.zsh/fasd"
 zplug "clvv/fasd", as:command, use:fasd
