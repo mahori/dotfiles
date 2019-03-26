@@ -1,13 +1,3 @@
-/custom.el
-/history
-/irony/
-/network-security.data
-/projectile.cache
-/recentf
-
-# Created by https://www.gitignore.io/api/emacs
-
-### Emacs ###
 # -*- mode: gitignore; -*-
 *~
 \#*\#
@@ -50,27 +40,9 @@ flycheck_*.el
 
 # projectiles files
 .projectile
-projectile-bookmarks.eld
 
 # directory configuration
 .dir-locals.el
 
-# saveplace
-places
-
-# url cache
-url/cache/
-
-# cedet
-ede-projects.el
-
-# smex
-smex-items
-
-# company-statistics
-company-statistics-cache.el
-
-# anaconda-mode
-anaconda-mode/
-
-# End of https://www.gitignore.io/api/emacs
+# network security
+/network-security.data
