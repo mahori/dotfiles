@@ -101,6 +101,11 @@
   (which-key-mode 1)
   )
 
+(use-package zzz-to-char
+  :ensure t
+  :bind ("M-z" . zzz-to-char)           ; zap-to-char
+  )
+
 (use-package autorevert
   :hook ((conf-unix-mode cperl-mode emacs-lisp-mode sh-mode) . auto-revert-mode)
   )
@@ -217,6 +222,11 @@
     :ensure avy-migemo
     :after swiper
     )
+
+  ;; (use-package avy-migemo-e.g.zzz-to-char
+  ;;   :ensure avy-migemo
+  ;;   :after zzz-to-char
+  ;;   )
 
   (use-package posframe
     :ensure t
