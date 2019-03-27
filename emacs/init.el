@@ -173,6 +173,12 @@
     :hook ((cperl-mode emacs-lisp-mode) . company-mode)
     )
 
+  (use-package company-box
+    :ensure t
+    :after company
+    :hook (company-mode . company-box-mode)
+    )
+
   (use-package dired-subtree
     :ensure t
     :after dired
