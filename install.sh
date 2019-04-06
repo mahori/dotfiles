@@ -12,8 +12,3 @@ ln -s $PWD/tmux.conf $HOME/.tmux.conf
 echo 'zsh'
 ln -s $PWD/zshrc $HOME/.zshrc
 ln -s $PWD/zsh $HOME/.zsh
-temp_template=$(basename $0)
-export ZDOTDIR=$(mktemp -t $temp_template)
-export ZPLG_HOME="$HOME/.zsh/zplugin"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-rm -rf $ZDOTDIR
