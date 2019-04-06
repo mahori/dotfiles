@@ -45,50 +45,41 @@ zstyle ':chpwd:*' recent-dirs-max 400
 autoload -Uz smart-insert-last-word
 zle -N insert-last-word smart-insert-last-word
 
-# zplug
-export ZPLUG_HOME="${HOME}/.zsh/zplug"
-if [ ! -d ${ZPLUG_HOME}/repos/zplug/zplug ]
-then
-    mkdir -p ${ZPLUG_HOME}/repos/zplug/zplug
-    git clone https://github.com/zplug/zplug ${ZPLUG_HOME}/repos/zplug/zplug
-fi
-source ${ZPLUG_HOME}/repos/zplug/zplug/init.zsh
-export PATH="${ZPLUG_BIN}:${PATH}"
-
-# emacs
-zplug "plugins/emacs", from:oh-my-zsh
+# zplugin
+declare -A ZPLGM
+ZPLGM[HOME_DIR]="${HOME}/.zsh/zplugin"
+source "${HOME}/.zsh/zplugin/bin/zplugin.zsh"
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
 
 # fasd
 export _FASD_DATA="${HOME}/.zsh/fasd"
-zplug "clvv/fasd", as:command, use:fasd
+zplugin ice pick'fasd'
+zplugin light clvv/fasd
 eval "$(fasd --init auto)"
 
 # git
-zplug "plugins/git", from:oh-my-zsh
+zplugin snippet OMZ::lib/git.zsh
+zplugin snippet OMZ::plugins/git/git.plugin.zsh
 
 # gitignore
-zplug "plugins/gitignore", from:oh-my-zsh
+zplugin snippet OMZ::plugins/gitignore/gitignore.plugin.zsh
 
 # zsh-grc
 grc_options_df='-h'
 grc_options_du='-h'
 grc_options_ls='-CFw'
-zplug "mahori/zsh-grc", use:grc.zsh
+zplugin ice src'grc.zsh'
+zplugin light mahori/zsh-grc
 
-# theme
-if [ -n "${INSIDE_EMACS}" ]
-then
-    # rawsyntax
-    zplug "rawsyntax/7310990", from:gist, as:theme
-else
-    # solarized-powerline
-    export SP_DISABLE_VIRTUAL_ENV_PROMPT='true'
-    export SP_DISABLE_VI_INDICATOR='true'
-    zplug "houjunchen/solarized-powerline", as:theme
-fi
+# solarized-powerline
+setopt promptsubst
+export SP_DISABLE_VIRTUAL_ENV_PROMPT='true'
+export SP_DISABLE_VI_INDICATOR='true'
+zplugin light houjunchen/solarized-powerline
 
 # zaw
-zplug "zsh-users/zaw"
+zplugin light zsh-users/zaw
 bindkey '^X^A' zaw-fasd
 bindkey '^X^D' zaw-fasd-directories
 bindkey '^X^F' zaw-fasd-files
@@ -98,29 +89,22 @@ bindkey '^X^E^S' zaw-ssh-hosts
 bindkey '^X^E^T' zaw-tmux
 
 # zsh-autosuggestions
-zplug "zsh-users/zsh-autosuggestions"
+zplugin light zsh-users/zsh-autosuggestions
 
 # zsh-completions
-zplug "zsh-users/zsh-completions"
+zplugin light zsh-users/zsh-completions
 
 # zsh-syntax-highlighting
-zplug "zsh-users/zsh-syntax-highlighting"
+zplugin light zsh-users/zsh-syntax-highlighting
 
 # zsh-history-substring-search
 #   https://github.com/zsh-users/zsh-history-substring-search#usage
 #   によりzsh-syntax-highlightingを先にロード
-zplug "zsh-users/zsh-history-substring-search"
+zplugin light zsh-users/zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
-# zplug
-zplug "zplug/zplug", hook-build:'zplug --self-manage'
-
-if ! zplug check
-then
-    zplug install
-fi
-
-zplug load
+autoload -Uz compinit
+compinit -u -d "${HOME}/.zsh/zcompdump"
