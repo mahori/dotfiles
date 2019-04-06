@@ -46,11 +46,21 @@ autoload -Uz smart-insert-last-word
 zle -N insert-last-word smart-insert-last-word
 
 # zplugin
+export ZPLG_HOME="${HOME}/.zsh/zplugin"
+if [[ ! -d "${ZPLG_HOME}" ]]; then
+    export ZDOTDIR=$(mktemp -d -t zplugin)
+    touch ${ZDOTDIR}/.zshrc
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+    rm -rf ${ZDOTDIR}
+    unset ZDOTDIR
+fi
+
 declare -A ZPLGM
-ZPLGM[HOME_DIR]="${HOME}/.zsh/zplugin"
+ZPLGM[HOME_DIR]="${ZPLG_HOME}"
 source "${HOME}/.zsh/zplugin/bin/zplugin.zsh"
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
+unset ZPLG_HOME
 
 # fasd
 export _FASD_DATA="${HOME}/.zsh/fasd"
