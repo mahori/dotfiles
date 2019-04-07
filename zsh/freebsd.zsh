@@ -1,4 +1,3 @@
-export EDITOR='emacs'
 export GIT_EDITOR='emacs'
 export SVN_EDITOR='emacs'
 export PATH="${HOME}/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/games"

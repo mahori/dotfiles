@@ -1,9 +1,9 @@
-export EDITOR=emacs
+export EDITOR='emacs'
 export HISTFILE="${HOME}/.zsh/history"
 export HISTSIZE=50000
-export LSCOLORS=exFxCxdxBxegedabagacad
+export LSCOLORS='exFxCxdxBxegedabagacad'
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-export PAGER=less
+export PAGER='less'
 export SAVEHIST=50000
 
 autoload -Uz colors
@@ -38,7 +38,7 @@ zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'c
 # cdr
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
-zstyle ':chpwd:*' recent-dirs-file ${HOME}/.zsh/chpwd-recent-dirs +
+zstyle ':chpwd:*' recent-dirs-file "${HOME}/.zsh/chpwd-recent-dirs" +
 zstyle ':chpwd:*' recent-dirs-max 400
 
 # smart-insert-last-word
@@ -47,7 +47,8 @@ zle -N insert-last-word smart-insert-last-word
 
 # zplugin
 export ZPLG_HOME="${HOME}/.zsh/zplugin"
-if [[ ! -d "${ZPLG_HOME}" ]]; then
+if [[ ! -d "${ZPLG_HOME}" ]]
+then
     export ZDOTDIR=$(mktemp -d -t zplugin)
     touch ${ZDOTDIR}/.zshrc
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
@@ -65,31 +66,31 @@ unset ZPLG_HOME
 # fasd
 export _FASD_DATA="${HOME}/.zsh/fasd"
 zplugin ice pick'fasd'
-zplugin light clvv/fasd
+zplugin light 'clvv/fasd'
 eval "$(fasd --init auto)"
 
 # git
-zplugin snippet OMZ::lib/git.zsh
-zplugin snippet OMZ::plugins/git/git.plugin.zsh
+zplugin snippet 'OMZ::lib/git.zsh'
+zplugin snippet 'OMZ::plugins/git/git.plugin.zsh'
 
 # gitignore
-zplugin snippet OMZ::plugins/gitignore/gitignore.plugin.zsh
+zplugin snippet 'OMZ::plugins/gitignore/gitignore.plugin.zsh'
 
 # zsh-grc
 grc_options_df='-h'
 grc_options_du='-h'
 grc_options_ls='-CFw'
 zplugin ice src'grc.zsh'
-zplugin light mahori/zsh-grc
+zplugin light 'mahori/zsh-grc'
 
 # solarized-powerline
 setopt promptsubst
 export SP_DISABLE_VIRTUAL_ENV_PROMPT='true'
 export SP_DISABLE_VI_INDICATOR='true'
-zplugin light houjunchen/solarized-powerline
+zplugin light 'houjunchen/solarized-powerline'
 
 # zaw
-zplugin light zsh-users/zaw
+zplugin light 'zsh-users/zaw'
 bindkey '^X^A' zaw-fasd
 bindkey '^X^D' zaw-fasd-directories
 bindkey '^X^F' zaw-fasd-files
@@ -99,18 +100,18 @@ bindkey '^X^E^S' zaw-ssh-hosts
 bindkey '^X^E^T' zaw-tmux
 
 # zsh-autosuggestions
-zplugin light zsh-users/zsh-autosuggestions
+zplugin light 'zsh-users/zsh-autosuggestions'
 
 # zsh-completions
-zplugin light zsh-users/zsh-completions
+zplugin light 'zsh-users/zsh-completions'
 
 # zsh-syntax-highlighting
-zplugin light zsh-users/zsh-syntax-highlighting
+zplugin light 'zsh-users/zsh-syntax-highlighting'
 
 # zsh-history-substring-search
 #   https://github.com/zsh-users/zsh-history-substring-search#usage
 #   によりzsh-syntax-highlightingを先にロード
-zplugin light zsh-users/zsh-history-substring-search
+zplugin light 'zsh-users/zsh-history-substring-search'
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
