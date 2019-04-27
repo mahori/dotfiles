@@ -7,6 +7,7 @@ ln -s $PWD/emacs $HOME/.emacs.d
 # tmux
 echo 'tmux'
 ln -s $PWD/tmux.conf $HOME/.tmux.conf
+ln -s $PWD/tmux $HOME/.tmux
 
 # zsh
 echo 'zsh'
