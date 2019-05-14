@@ -179,22 +179,6 @@
     :hook (company-mode . company-box-mode)
     )
 
-  (use-package dired-subtree
-    :ensure t
-    :after dired
-    :bind (:map dired-mode-map
-                ("C-c t" . dired-subtree-toggle))
-    )
-
-  (use-package dired-toggle
-    :ensure t
-    :bind (("C-c d"                 . dired-toggle)
-           :map dired-mode-map
-           ("^"                     . dired-toggle-up-directory) ; dired-up-directory
-           ("q"                     . dired-toggle-quit)         ; quit-window
-           ([remap dired-find-file] . dired-toggle-find-file))
-    )
-
   (use-package migemo
     :ensure t
     :config
