@@ -16,6 +16,20 @@
 (eval-when-compile
   (require 'use-package))
 
+(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+(add-to-list 'el-get-recipe-path (locate-user-emacs-file "el-get/recipes"))
+(setq mahori:el-get-packages '(el-get))
+(when (and (eq system-type 'darwin)
+           (> (user-uid) 1000))
+  (setq mahori:el-get-packages (append mahori:el-get-packages '(avy-migemo))))
+(el-get 'sync mahori:el-get-packages)
+
 (setq-default indent-tabs-mode nil)
 
 (setq history-delete-duplicates t)
@@ -191,31 +205,26 @@
     )
 
   (use-package avy-migemo
-    :ensure t
     :after migemo
     :config
     (avy-migemo-mode 1)
     )
 
   (use-package avy-migemo-e.g.ivy
-    :ensure avy-migemo
     :after ivy
     )
 
-  ;; (use-package avy-migemo-e.g.counsel
-  ;;   :ensure avy-migemo
-  ;;   :after counsel
-  ;;   )
+  (use-package avy-migemo-e.g.counsel
+    :after counsel
+    )
 
   (use-package avy-migemo-e.g.swiper
-    :ensure avy-migemo
     :after swiper
     )
 
-  ;; (use-package avy-migemo-e.g.zzz-to-char
-  ;;   :ensure avy-migemo
-  ;;   :after zzz-to-char
-  ;;   )
+  (use-package avy-migemo-e.g.zzz-to-char
+    :after zzz-to-char
+    )
 
   (use-package yasnippet
     :ensure t
