@@ -234,32 +234,6 @@
   ;;   :after zzz-to-char
   ;;   )
 
-  (use-package posframe
-    :ensure t
-    )
-
-  (use-package ivy-posframe
-    :ensure t
-    :after (ivy posframe)
-    :config
-    (setq ivy-display-function #'ivy-posframe-display-at-frame-center)
-    (ivy-posframe-enable)
-    )
-
-  (use-package company-posframe
-    :ensure t
-    :after (company posframe)
-    :hook ((cperl-mode emacs-lisp-mode) . company-posframe-mode)
-    )
-
-  (use-package which-key-posframe
-    :ensure t
-    :after (posframe which-key)
-    :config
-    (which-key-posframe-mode 1)
-    (setq which-key-posframe-poshandler 'posframe-poshandler-frame-center)
-    )
-
   (use-package yasnippet
     :ensure t
     :hook ((cperl-mode emacs-lisp-mode sh-mode) . yas-minor-mode)
