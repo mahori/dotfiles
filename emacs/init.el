@@ -139,16 +139,15 @@
           (setcdr pair 'cperl-mode)))
       (append auto-mode-alist interpreter-mode-alist))
 
-(when (eq system-type 'darwin)
+(when (and (eq system-type 'darwin)
+           (> (user-uid) 1000))
   (setq default-frame-alist '((width . 200) (height . 60)))
 
   (set-face-attribute 'default nil :family "Ricty Discord" :height 150)
 
   (scroll-bar-mode 0)
   (tool-bar-mode 0)
-  )
 
-(when window-system
   (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil))
 
   (use-package all-the-icons
