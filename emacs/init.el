@@ -140,7 +140,7 @@
       (append auto-mode-alist interpreter-mode-alist))
 
 (when (eq system-type 'darwin)
-  (setq default-frame-alist '((width . 240) (height . 75)))
+  (setq default-frame-alist '((width . 200) (height . 60)))
 
   (set-face-attribute 'default nil :family "Ricty Discord" :height 150)
 
