@@ -1,0 +1,6 @@
+(:name init-loader
+       :website "https://github.com/mahori/init-loader"
+       :description "It enables you to categorize your configurations and separate them into multiple files."
+       :type github
+       :pkgname "mahori/init-loader"
+       :branch "patched")
