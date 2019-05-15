@@ -122,6 +122,7 @@
   )
 
 (use-package autorevert
+  :commands auto-revert-mode
   :hook ((conf-unix-mode cperl-mode emacs-lisp-mode sh-mode) . auto-revert-mode)
   )
 
@@ -130,6 +131,7 @@
   )
 
 (use-package display-line-numbers
+  :commands display-line-numbers-mode
   :hook ((conf-unix-mode cperl-mode emacs-lisp-mode sh-mode) . display-line-numbers-mode)
   )
 
@@ -137,6 +139,7 @@
   )
 
 (use-package hl-line
+  :commands hl-line-mode
   :hook ((conf-unix-mode cperl-mode emacs-lisp-mode sh-mode) . hl-line-mode)
   )
 
