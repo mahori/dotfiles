@@ -123,7 +123,7 @@
 
 (use-package autorevert
   :commands auto-revert-mode
-  :hook ((conf-unix-mode cperl-mode emacs-lisp-mode sh-mode) . auto-revert-mode)
+  :hook ((conf-unix-mode emacs-lisp-mode sh-mode) . auto-revert-mode)
   )
 
 (use-package bs
@@ -132,7 +132,7 @@
 
 (use-package display-line-numbers
   :commands display-line-numbers-mode
-  :hook ((conf-unix-mode cperl-mode emacs-lisp-mode sh-mode) . display-line-numbers-mode)
+  :hook ((conf-unix-mode emacs-lisp-mode sh-mode) . display-line-numbers-mode)
   )
 
 (use-package generic-x
@@ -140,11 +140,12 @@
 
 (use-package hl-line
   :commands hl-line-mode
-  :hook ((conf-unix-mode cperl-mode emacs-lisp-mode sh-mode) . hl-line-mode)
+  :hook ((conf-unix-mode emacs-lisp-mode sh-mode) . hl-line-mode)
   )
 
 (use-package paren
-  :hook ((cperl-mode emacs-lisp-mode sh-mode) . show-paren-mode)
+  :commands show-paren-mode
+  :hook ((emacs-lisp-mode sh-mode) . show-paren-mode)
   :config
   (setq show-paren-style 'expression)
   )
@@ -182,7 +183,8 @@
 
   (use-package company
     :ensure t
-    :hook ((cperl-mode emacs-lisp-mode) . company-mode)
+    :commands company-mode
+    :hook (emacs-lisp-mode . company-mode)
     )
 
   (use-package company-box
@@ -227,7 +229,8 @@
 
   (use-package yasnippet
     :ensure t
-    :hook ((cperl-mode emacs-lisp-mode sh-mode) . yas-minor-mode)
+    :commands yas-minor-mode
+    :hook ((emacs-lisp-mode sh-mode) . yas-minor-mode)
     )
 
   (use-package yasnippet-snippets
