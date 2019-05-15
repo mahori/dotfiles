@@ -24,7 +24,8 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 (add-to-list 'el-get-recipe-path (locate-user-emacs-file "el-get/recipes"))
-(setq mahori:el-get-packages '(el-get))
+(setq mahori:el-get-packages '(el-get
+                               init-loader))
 (when (and (eq system-type 'darwin)
            (> (user-uid) 1000))
   (setq mahori:el-get-packages (append mahori:el-get-packages '(avy-migemo))))
@@ -148,11 +149,6 @@
 (bind-keys ("C-c a" . align)
            ("C-c l" . sort-lines))
 
-(mapc (lambda (pair)
-        (when (eq (cdr pair) 'perl-mode)
-          (setcdr pair 'cperl-mode)))
-      (append auto-mode-alist interpreter-mode-alist))
-
 (when (and (eq system-type 'darwin)
            (> (user-uid) 1000))
   (setq default-frame-alist '((width . 200) (height . 60)))
@@ -260,4 +256,9 @@
 
 (unless window-system
   (menu-bar-mode 0)
+  )
+
+(use-package init-loader
+  :config
+  (init-loader-load)
   )
