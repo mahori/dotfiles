@@ -1,5 +1,5 @@
 (:name avy-migemo
-       :website "https://github.com/mahori/avy-migemo"
+       :website "https://github.com/momomo5717/avy-migemo"
        :description "avy with migemo"
        :type github
        :pkgname "mahori/avy-migemo"
