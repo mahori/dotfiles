@@ -70,6 +70,14 @@
          ("M-x"     . counsel-M-x))              ; execute-extended-command
   )
 
+(use-package ivy-rich
+  :ensure t
+  :after (counsel ivy)
+  :config
+  (setq ivy-format-function #'ivy-format-function-line)
+  (ivy-rich-mode 1)
+  )
+
 (use-package smex
   :ensure t
   :after counsel
