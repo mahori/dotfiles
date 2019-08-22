@@ -164,33 +164,10 @@
 
   (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil))
 
-  (use-package all-the-icons
-    :ensure t
-    )
-
-  (use-package all-the-icons-dired
-    :ensure t
-    :after (all-the-icons dired)
-    :hook (dired-mode . all-the-icons-dired-mode)
-    )
-
-  (use-package all-the-icons-ivy
-    :ensure t
-    :after (all-the-icons ivy)
-    :config
-    (all-the-icons-ivy-setup)
-    )
-
   (use-package company
     :ensure t
     :commands company-mode
     :hook (emacs-lisp-mode . company-mode)
-    )
-
-  (use-package company-box
-    :ensure t
-    :after company
-    :hook (company-mode . company-box-mode)
     )
 
   (use-package migemo
