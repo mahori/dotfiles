@@ -61,6 +61,7 @@
 
 (use-package counsel
   :ensure t
+  :after ivy
   :bind (("<f1> b"  . counsel-descbinds)         ; describe-bindings
          ("<f1> f"  . counsel-describe-function) ; describe-function
          ("<f1> v"  . counsel-describe-variable) ; describe-variable
@@ -71,7 +72,9 @@
 
 (use-package smex
   :ensure t
-  :hook (counsel-mode . smex-initialize)
+  :after counsel
+  :config
+  (smex-initialize)
   )
 
 (use-package swiper
