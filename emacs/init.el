@@ -90,6 +90,11 @@
   :bind ("C-c s" . swiper)
   )
 
+(use-package avy
+  :ensure t
+  :bind ("C-t" . avy-goto-char-timer)
+  )
+
 (use-package comment-dwim-2
   :ensure t
   :bind ("M-;" . comment-dwim-2)        ; comment-dwim
@@ -194,7 +199,7 @@
     )
 
   (use-package avy-migemo
-    :after migemo
+    :after (avy migemo)
     :config
     (avy-migemo-mode 1)
     )
