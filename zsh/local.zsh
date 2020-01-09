@@ -79,7 +79,7 @@ zplugin snippet 'OMZ::plugins/gitignore/gitignore.plugin.zsh'
 # zsh-grc
 grc_options_df='-h'
 grc_options_du='-h'
-grc_options_ls='-CFw'
+grc_options_ls='-CF'
 zplugin ice src'grc.zsh'
 zplugin light 'mahori/zsh-grc'
 
