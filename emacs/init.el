@@ -6,7 +6,9 @@
   (load custom-file))
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(cl-case system-type
+  ('gnu/linux (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
+  (otherwise (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
