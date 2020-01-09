@@ -5,6 +5,9 @@ case ${OSTYPE} in
     freebsd*)
         source ${HOME}/.zsh/freebsd.zsh
         ;;
+    linux-gnu)
+        source ${HOME}/.zsh/linux.zsh
+        ;;
     *)
         ;;
 esac
