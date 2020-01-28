@@ -13,3 +13,8 @@ case ${OSTYPE} in
 esac
 
 source ${HOME}/.zsh/local.zsh
+
+if [[ -f ${HOME}/.zsh/private.zsh ]]
+then
+    source ${HOME}/.zsh/private.zsh
+fi
