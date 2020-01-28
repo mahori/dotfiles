@@ -102,6 +102,12 @@
   :bind ("M-;" . comment-dwim-2)        ; comment-dwim
   )
 
+(use-package company
+  :ensure t
+  :commands company-mode
+  :hook (emacs-lisp-mode . company-mode)
+  )
+
 (use-package recentf-ext
   :ensure t
   :config
@@ -132,6 +138,23 @@
   :ensure t
   :config
   (which-key-mode 1)
+  )
+
+(use-package yasnippet
+  :ensure t
+  :commands yas-minor-mode
+  :hook ((emacs-lisp-mode sh-mode) . yas-minor-mode)
+  )
+
+(use-package yasnippet-snippets
+  :ensure t
+  :after yasnippet
+  )
+
+(use-package ivy-yasnippet
+  :ensure t
+  :after (ivy yasnippet yasnippet-snippets)
+  :bind ("C-c y" . ivy-yasnippet)
   )
 
 (use-package zzz-to-char
@@ -182,12 +205,6 @@
 
   (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil))
 
-  (use-package company
-    :ensure t
-    :commands company-mode
-    :hook (emacs-lisp-mode . company-mode)
-    )
-
   (use-package migemo
     :ensure t
     :config
@@ -220,23 +237,6 @@
 
   (use-package avy-migemo-e.g.zzz-to-char
     :after zzz-to-char
-    )
-
-  (use-package yasnippet
-    :ensure t
-    :commands yas-minor-mode
-    :hook ((emacs-lisp-mode sh-mode) . yas-minor-mode)
-    )
-
-  (use-package yasnippet-snippets
-    :ensure t
-    :after yasnippet
-    )
-
-  (use-package ivy-yasnippet
-    :ensure t
-    :after (ivy yasnippet yasnippet-snippets)
-    :bind ("C-c y" . ivy-yasnippet)
     )
 
   (use-package dired
