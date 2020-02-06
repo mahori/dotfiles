@@ -1,12 +1,14 @@
 export GIT_EDITOR='atom --wait'
 export SVN_EDITOR='atom --wait'
-export PERL5LIB="${HOME}/local/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"
-export PERL_LOCAL_LIB_ROOT="${HOME}/local/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"
-export PERL_MB_OPT="--install_base \"${HOME}/local/perl5\""
-export PERL_MM_OPT="INSTALL_BASE=${HOME}/local/perl5"
+export CPAN_HOME="${HOME}/local/perl5"
+export PERL5LIB="${CPAN_HOME}/lib/perl5${PERL5LIB+:}${PERL5LIB}"
+export PERL_LOCAL_LIB_ROOT="${CPAN_HOME}${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"
+export PERL_MB_OPT="--install_base \"${CPAN_HOME}\""
+export PERL_MM_OPT="INSTALL_BASE=${CPAN_HOME}"
+export GEM_HOME="${HOME}/local/ruby"
 export ORACLE_HOME="${HOME}/local/oracle"
 export DYLD_LIBRARY_PATH="${ORACLE_HOME}${DYLD_LIBRARY_PATH+:}${DYLD_LIBRARY_PATH}"
-export PATH="${HOME}/bin:${HOME}/local/perl5/bin:${ORACLE_HOME}:/usr/local/opt/qt/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/libexec:/opt/X11/bin"
+export PATH="${HOME}/bin:${CPAN_HOME}/bin:${GEM_HOME}/bin:${ORACLE_HOME}:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/libexec:/opt/X11/bin"
 
 case ${UID} in
     501)
