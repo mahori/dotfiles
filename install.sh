@@ -35,7 +35,7 @@ fi
 export ZPLG_HOME="${HOME}/.zsh/zplugin"
 if [ ! -e "${ZPLG_HOME}" ]
 then
-    export ZDOTDIR="$(mktemp -d -t zplugin)"
+    export ZDOTDIR=$(mktemp -d -t 'zplugin.XXXXXXXXXX')
     touch ${ZDOTDIR}/.zshrc
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
     rm -rf ${ZDOTDIR}
