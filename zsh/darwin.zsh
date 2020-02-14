@@ -26,7 +26,3 @@ alias ek='emacsclient -e "(kill-emacs)"'
 alias ll='ls -AlO'
 
 source /usr/local/etc/profile.d/colorsvn-env.sh
-if [[ -r ${HOME}/.zsh/GitHub.zsh ]]
-then
-    source ${HOME}/.zsh/GitHub.zsh
-fi
