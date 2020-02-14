@@ -1,4 +1,5 @@
 (defun mahori:ruby-mode-hook ()
+  (setq ruby-deep-indent-paren-style nil)
   (auto-revert-mode 1)
   (company-mode 1)
   (display-line-numbers-mode 1)
