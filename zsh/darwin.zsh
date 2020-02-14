@@ -8,7 +8,7 @@ export PERL_MM_OPT="INSTALL_BASE=${CPAN_HOME}"
 export GEM_HOME="${HOME}/local/ruby"
 export ORACLE_HOME="${HOME}/local/oracle"
 export DYLD_LIBRARY_PATH="${ORACLE_HOME}${DYLD_LIBRARY_PATH+:}${DYLD_LIBRARY_PATH}"
-export PATH="${HOME}/bin:${CPAN_HOME}/bin:${GEM_HOME}/bin:${ORACLE_HOME}:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/libexec:/opt/X11/bin"
+export PATH="${HOME}/bin:${CPAN_HOME}/bin:${GEM_HOME}/bin:${ORACLE_HOME}:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/libexec"
 
 case ${UID} in
     501)
