@@ -32,11 +32,15 @@ if [ ! -e $HOME/.zsh ]
 then
     ln -s $PWD/zsh $HOME/.zsh
 fi
-export ZPLG_HOME="${HOME}/.zsh/zplugin"
-if [ ! -e "${ZPLG_HOME}" ]
+export ZINIT_HOME="${HOME}/.zsh/zinit"
+if [ ! -e "${ZINIT_HOME}" ]
 then
-    export ZDOTDIR=$(mktemp -d -t 'zplugin.XXXXXXXXXX')
+    export ZDOTDIR=$(mktemp -d -t 'zinit.XXXXXXXXXX')
     touch ${ZDOTDIR}/.zshrc
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
     rm -rf ${ZDOTDIR}
+    if [ -d /tmp/zinit ]
+    then
+        rm -rf /tmp/zinit
+    fi
 fi

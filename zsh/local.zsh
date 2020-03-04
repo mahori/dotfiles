@@ -45,41 +45,43 @@ zstyle ':chpwd:*' recent-dirs-max 400
 autoload -Uz smart-insert-last-word
 zle -N insert-last-word smart-insert-last-word
 
-# zplugin
-declare -A ZPLGM
-ZPLGM[HOME_DIR]="${HOME}/.zsh/zplugin"
-source "${HOME}/.zsh/zplugin/bin/zplugin.zsh"
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+# zinit
+declare -A ZINIT
+ZINIT[HOME_DIR]="${HOME}/.zsh/zinit"
+ZINIT[ZCOMPDUMP_PATH]="${HOME}/.zsh/zcompdump"
+ZINIT[COMPINIT_OPTS]='-u'
+source "${HOME}/.zsh/zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
 # fasd
 export _FASD_DATA="${HOME}/.zsh/fasd"
-zplugin ice pick'fasd'
-zplugin light 'clvv/fasd'
+zinit ice pick'fasd'
+zinit light 'clvv/fasd'
 eval "$(fasd --init auto)"
 
 # git
-zplugin snippet 'OMZ::lib/git.zsh'
-zplugin snippet 'OMZ::plugins/git/git.plugin.zsh'
+zinit snippet 'OMZ::lib/git.zsh'
+zinit snippet 'OMZ::plugins/git/git.plugin.zsh'
 
 # gitignore
-zplugin snippet 'OMZ::plugins/gitignore/gitignore.plugin.zsh'
+zinit snippet 'OMZ::plugins/gitignore/gitignore.plugin.zsh'
 
 # zsh-grc
 grc_options_df='-h'
 grc_options_du='-h'
 grc_options_ls='-CF'
-zplugin ice src'grc.zsh'
-zplugin light 'mahori/zsh-grc'
+zinit ice src'grc.zsh'
+zinit light 'mahori/zsh-grc'
 
 # solarized-powerline
 setopt promptsubst
 export SP_DISABLE_VIRTUAL_ENV_PROMPT='true'
 export SP_DISABLE_VI_INDICATOR='true'
-zplugin light 'houjunchen/solarized-powerline'
+zinit light 'houjunchen/solarized-powerline'
 
 # zaw
-zplugin light 'zsh-users/zaw'
+zinit light 'zsh-users/zaw'
 bindkey '^X^A' zaw-fasd
 bindkey '^X^D' zaw-fasd-directories
 bindkey '^X^F' zaw-fasd-files
@@ -89,18 +91,18 @@ bindkey '^X^E^S' zaw-ssh-hosts
 bindkey '^X^E^T' zaw-tmux
 
 # zsh-autosuggestions
-zplugin light 'zsh-users/zsh-autosuggestions'
+zinit light 'zsh-users/zsh-autosuggestions'
 
 # zsh-completions
-zplugin light 'zsh-users/zsh-completions'
+zinit light 'zsh-users/zsh-completions'
 
 # zsh-syntax-highlighting
-zplugin light 'zsh-users/zsh-syntax-highlighting'
+zinit light 'zsh-users/zsh-syntax-highlighting'
 
 # zsh-history-substring-search
 #   https://github.com/zsh-users/zsh-history-substring-search#usage
 #   によりzsh-syntax-highlightingを先にロード
-zplugin light 'zsh-users/zsh-history-substring-search'
+zinit light 'zsh-users/zsh-history-substring-search'
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
