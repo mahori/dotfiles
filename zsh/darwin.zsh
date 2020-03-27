@@ -25,5 +25,3 @@ alias ec='emacsclient -a "" -c -n'
 alias et='emacsclient -a "" -t'
 alias ek='emacsclient -e "(kill-emacs)"'
 alias ll='ls -AlO'
-
-source /usr/local/etc/profile.d/colorsvn-env.sh
