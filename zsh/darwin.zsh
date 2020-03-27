@@ -1,6 +1,6 @@
 export GIT_EDITOR='code --wait'
 export SVN_EDITOR='code --wait'
-export CPAN_HOME="${HOME}/local/perl5"
+export CPAN_HOME="${HOME}/local/perl"
 export PERL5LIB="${CPAN_HOME}/lib/perl5${PERL5LIB+:}${PERL5LIB}"
 export PERL_LOCAL_LIB_ROOT="${CPAN_HOME}${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"
 export PERL_MB_OPT="--install_base \"${CPAN_HOME}\""
