@@ -1,5 +1,5 @@
-export GIT_EDITOR='atom --wait'
-export SVN_EDITOR='atom --wait'
+export GIT_EDITOR='code --wait'
+export SVN_EDITOR='code --wait'
 export CPAN_HOME="${HOME}/local/perl5"
 export PERL5LIB="${CPAN_HOME}/lib/perl5${PERL5LIB+:}${PERL5LIB}"
 export PERL_LOCAL_LIB_ROOT="${CPAN_HOME}${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"
