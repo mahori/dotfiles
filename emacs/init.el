@@ -94,7 +94,8 @@
 
 (use-package avy
   :ensure t
-  :bind ("C-t" . avy-goto-char-timer)
+  :bind (("C-h" . avy-goto-line)        ; help-command
+         ("C-t" . avy-goto-char-timer)) ; transpose-chars
   )
 
 (use-package comment-dwim-2
