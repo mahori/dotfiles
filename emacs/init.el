@@ -155,7 +155,7 @@
 
 (use-package autorevert
   :commands auto-revert-mode
-  :hook ((conf-unix-mode emacs-lisp-mode sh-mode) . auto-revert-mode)
+  :hook ((emacs-lisp-mode sh-mode) . auto-revert-mode)
   )
 
 (use-package bs
@@ -164,7 +164,7 @@
 
 (use-package display-line-numbers
   :commands display-line-numbers-mode
-  :hook ((conf-unix-mode emacs-lisp-mode sh-mode) . display-line-numbers-mode)
+  :hook ((emacs-lisp-mode sh-mode) . display-line-numbers-mode)
   )
 
 (use-package generic-x
@@ -172,7 +172,7 @@
 
 (use-package hl-line
   :commands hl-line-mode
-  :hook ((conf-unix-mode emacs-lisp-mode sh-mode) . hl-line-mode)
+  :hook ((emacs-lisp-mode sh-mode) . hl-line-mode)
   )
 
 (use-package paren
