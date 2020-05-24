@@ -26,8 +26,7 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 (add-to-list 'el-get-recipe-path (locate-user-emacs-file "el-get/recipes"))
-(setq mahori:el-get-packages '(el-get
-                               init-loader))
+(setq mahori:el-get-packages '(el-get))
 (when (and (eq system-type 'darwin)
            (> (user-uid) 1000))
   (setq mahori:el-get-packages (append mahori:el-get-packages '(avy-migemo))))
@@ -268,6 +267,7 @@
   )
 
 (use-package init-loader
+  :ensure t
   :config
   (setq init-loader-show-log-after-init 'error-only)
   (init-loader-load)
