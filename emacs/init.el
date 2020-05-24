@@ -152,23 +152,11 @@
   :bind ("M-z" . zzz-to-char)           ; zap-to-char
   )
 
-(use-package autorevert
-  :commands auto-revert-mode
-  )
-
 (use-package bs
   :bind ("C-x C-b" . bs-show)           ; list-buffers
   )
 
-(use-package display-line-numbers
-  :commands display-line-numbers-mode
-  )
-
 (use-package generic-x
-  )
-
-(use-package hl-line
-  :commands hl-line-mode
   )
 
 (use-package paren
