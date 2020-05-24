@@ -155,7 +155,6 @@
 
 (use-package autorevert
   :commands auto-revert-mode
-  :hook (sh-mode . auto-revert-mode)
   )
 
 (use-package bs
@@ -164,7 +163,6 @@
 
 (use-package display-line-numbers
   :commands display-line-numbers-mode
-  :hook (sh-mode . display-line-numbers-mode)
   )
 
 (use-package generic-x
@@ -172,12 +170,10 @@
 
 (use-package hl-line
   :commands hl-line-mode
-  :hook (sh-mode . hl-line-mode)
   )
 
 (use-package paren
   :commands show-paren-mode
-  :hook (sh-mode . show-paren-mode)
   :config
   (setq show-paren-style 'expression)
   )
@@ -238,7 +234,6 @@
   (use-package yasnippet
     :ensure t
     :commands yas-minor-mode
-    :hook (sh-mode . yas-minor-mode)
     )
 
   (use-package yasnippet-snippets
