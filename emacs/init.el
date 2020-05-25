@@ -38,19 +38,21 @@
 (setq history-length (* history-length 10))
 (setq inhibit-startup-screen t)
 
+(column-number-mode 1)
 (save-place-mode 1)
 (savehist-mode 1)
 
-(use-package powerline
+(use-package doom-themes
   :ensure t
+  :config
+  (load-theme 'doom-one t)
+  (doom-themes-visual-bell-config)
   )
 
-(use-package moe-theme
+(use-package doom-modeline
   :ensure t
-  :after powerline
-  :config
-  (moe-dark)
-  (powerline-moe-theme)
+  :init
+  (doom-modeline-mode 1)
   )
 
 (use-package ivy
