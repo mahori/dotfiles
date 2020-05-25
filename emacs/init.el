@@ -152,11 +152,11 @@
   :bind ("M-z" . zzz-to-char)           ; zap-to-char
   )
 
-(use-package bs
-  :bind ("C-x C-b" . bs-show)           ; list-buffers
+(use-package generic-x
   )
 
-(use-package generic-x
+(use-package ibuffer
+  :bind ("C-x C-b" . ibuffer)           ; list-buffers
   )
 
 (use-package paren
