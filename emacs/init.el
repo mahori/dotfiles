@@ -218,6 +218,36 @@
     :commands company-mode
     )
 
+  (use-package all-the-icons
+    :ensure t
+    )
+
+  (use-package all-the-icons-ivy
+    :ensure t
+    :after (all-the-icons ivy)
+    :hook (after-init . all-the-icons-ivy-setup)
+    )
+
+  (use-package all-the-icons-ivy-rich
+    :ensure t
+    :after (all-the-icons ivy ivy-rich)
+    :init
+    (all-the-icons-ivy-rich-mode 1)
+    )
+
+  (use-package all-the-icons-dired
+    :ensure t
+    :after (all-the-icons dired)
+    :hook (dired-mode . all-the-icons-dired-mode)
+    )
+
+  (use-package all-the-icons-ibuffer
+    :ensure t
+    :after (all-the-icons ibuffer)
+    :init
+    (all-the-icons-ibuffer-mode 1)
+    )
+
   (use-package dashboard
     :ensure t
     :custom
