@@ -264,6 +264,12 @@
     (dashboard-setup-startup-hook)
     )
 
+  (use-package magit
+    :ensure t
+    :bind (("C-c g"   . magit-status)
+           ("C-c M-g" . magit-dispatch))
+    )
+
   (use-package projectile
     :ensure t
     :bind ("C-c p" . projectile-command-map)
@@ -293,6 +299,11 @@
     :after (dired treemacs)
     :config
     (treemacs-icons-dired-mode 1)
+    )
+
+  (use-package treemacs-magit
+    :ensure t
+    :after (magit treemacs)
     )
 
   (use-package treemacs-projectile
