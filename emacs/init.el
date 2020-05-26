@@ -42,6 +42,9 @@
 (save-place-mode 1)
 (savehist-mode 1)
 
+(define-prefix-command 'mahori:toggle-map)
+(bind-keys ("M-t" . mahori:toggle-map)) ; transpose-words
+
 (use-package doom-themes
   :ensure t
   :config
