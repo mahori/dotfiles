@@ -275,6 +275,11 @@
     (dashboard-setup-startup-hook)
     )
 
+  (use-package git-gutter-fringe
+    :ensure t
+    :bind ("M-t g" . git-gutter-mode)
+    )
+
   (use-package magit
     :ensure t
     :bind (("C-c g"   . magit-status)

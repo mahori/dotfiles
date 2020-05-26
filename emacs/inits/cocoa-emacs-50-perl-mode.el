@@ -7,6 +7,7 @@
   (auto-revert-mode 1)
   (company-mode 1)
   (display-line-numbers-mode 1)
+  (git-gutter-mode 1)
   (hl-line-mode 1)
   (show-paren-mode 1)
   (yas-minor-mode 1)
