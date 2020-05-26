@@ -157,6 +157,10 @@
   :bind ("M-z" . zzz-to-char)           ; zap-to-char
   )
 
+(use-package display-line-numbers
+  :bind ("M-t l" . display-line-numbers-mode)
+  )
+
 (use-package generic-x
   )
 
