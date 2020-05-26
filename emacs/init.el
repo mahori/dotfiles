@@ -248,6 +248,13 @@
     (all-the-icons-ibuffer-mode 1)
     )
 
+  (use-package minimap
+    :ensure t
+    :bind ("C-c m" . minimap-mode)
+    :custom
+    (minimap-window-location 'right)
+    )
+
   (use-package dashboard
     :ensure t
     :custom
