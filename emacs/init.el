@@ -43,7 +43,9 @@
 (savehist-mode 1)
 
 (define-prefix-command 'mahori:toggle-map)
-(bind-keys ("M-t" . mahori:toggle-map)) ; transpose-words
+(bind-keys ("C-c a" . align)
+           ("C-c l" . sort-lines)
+           ("M-t"   . mahori:toggle-map)) ; transpose-words
 
 (use-package doom-themes
   :ensure t
@@ -167,9 +169,6 @@
   :config
   (setq show-paren-style 'expression)
   )
-
-(bind-keys ("C-c a" . align)
-           ("C-c l" . sort-lines))
 
 (when (and (eq system-type 'darwin)
            (>= (user-uid) 1000))
