@@ -55,6 +55,10 @@
   (doom-modeline-mode 1)
   )
 
+(use-package amx
+  :ensure t
+  )
+
 (use-package ivy
   :ensure t
   :config
@@ -64,7 +68,7 @@
 
 (use-package counsel
   :ensure t
-  :after ivy
+  :after (amx ivy)
   :bind (("<f1> b"  . counsel-descbinds)         ; describe-bindings
          ("<f1> f"  . counsel-describe-function) ; describe-function
          ("<f1> v"  . counsel-describe-variable) ; describe-variable
@@ -77,15 +81,8 @@
   :ensure t
   :after (counsel ivy)
   :config
-  (setq ivy-format-function #'ivy-format-function-line)
+  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
   (ivy-rich-mode 1)
-  )
-
-(use-package smex
-  :ensure t
-  :after counsel
-  :config
-  (smex-initialize)
   )
 
 (use-package swiper
