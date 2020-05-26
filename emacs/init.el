@@ -254,7 +254,7 @@
 
   (use-package minimap
     :ensure t
-    :bind ("C-c m" . minimap-mode)
+    :bind ("M-t m" . minimap-mode)
     :custom
     (minimap-window-location 'right)
     )
@@ -298,8 +298,8 @@
     :defer t
     :bind (("M-0"       . treemacs-select-window)
            ("C-c t 1"   . treemacs-delete-other-windows)
-           ("C-c t t"   . treemacs)
-           ("C-c t C-t" . treemacs-find-file))
+           ("C-c t C-t" . treemacs-find-file)
+           ("M-t t"     . treemacs))
     )
 
   (use-package treemacs-icons-dired
