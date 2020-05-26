@@ -61,20 +61,21 @@
 
 (use-package ivy
   :ensure t
+  :custom
+  (ivy-use-virtual-buffers t)
   :config
+  (setq enable-recursive-minibuffers t)
   (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
   )
 
 (use-package counsel
   :ensure t
   :after (amx ivy)
-  :bind (("<f1> b"  . counsel-descbinds)         ; describe-bindings
-         ("<f1> f"  . counsel-describe-function) ; describe-function
-         ("<f1> v"  . counsel-describe-variable) ; describe-variable
-         ("C-c r"   . counsel-recentf)
-         ("C-x C-f" . counsel-find-file)         ; find-file
-         ("M-x"     . counsel-M-x))              ; execute-extended-command
+  :bind (("C-c r" . counsel-recentf)
+         :map minibuffer-local-map
+         ("C-r" . counsel-minibuffer-history))
+  :config
+  (counsel-mode 1)
   )
 
 (use-package ivy-rich
