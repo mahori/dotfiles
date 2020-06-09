@@ -1,0 +1,18 @@
+(defun mahori:cocoa-emacs-mode-hook ()
+  (company-mode 1)
+  (git-gutter-mode 1)
+  (show-paren-mode 1)
+  (yas-minor-mode 1)
+  (mahori:default-mode-hook)
+  )
+
+(defun mahori:ruby-mode-hook ()
+  (setq ruby-deep-indent-paren-style nil)
+  (mahori:cocoa-emacs-mode-hook)
+  )
+
+(add-hook 'cperl-mode-hook 'mahori:cocoa-emacs-mode-hook)
+(add-hook 'emacs-lisp-mode-hook 'mahori:cocoa-emacs-mode-hook)
+(add-hook 'python-mode-hook 'mahori:cocoa-emacs-mode-hook)
+(add-hook 'ruby-mode-hook 'mahori:ruby-mode-hook)
+(add-hook 'sh-mode-hook 'mahori:cocoa-emacs-mode-hook)
