@@ -262,11 +262,6 @@
     (minimap-window-location 'right)
     )
 
-  (use-package git-gutter-fringe
-    :ensure t
-    :bind ("M-t g" . git-gutter-mode)
-    )
-
   (use-package yasnippet
     :ensure t
     :commands yas-minor-mode
