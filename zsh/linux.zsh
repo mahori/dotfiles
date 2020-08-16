@@ -1,4 +1,4 @@
-export LD_LIBRARY_PATH="/usr/lib/oracle/19.5/client64/lib:/usr/local/lib${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
+export LD_LIBRARY_PATH="/usr/lib/oracle/19.8/client64/lib:/usr/local/lib${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
 export PATH="${HOME}/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
 case ${UID} in
