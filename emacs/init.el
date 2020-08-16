@@ -273,21 +273,6 @@
            ("C-c M-g" . magit-dispatch))
     )
 
-  (use-package projectile
-    :ensure t
-    :bind ("C-c p" . projectile-command-map)
-    :custom
-    (projectile-completion-system 'ivy)
-    :config
-    (projectile-mode 1)
-    )
-
-  (use-package counsel-projectile
-    :ensure t
-    :config
-    (counsel-projectile-mode 1)
-    )
-
   (use-package yasnippet
     :ensure t
     :commands yas-minor-mode
