@@ -267,12 +267,6 @@
     :bind ("M-t g" . git-gutter-mode)
     )
 
-  (use-package magit
-    :ensure t
-    :bind (("C-c g"   . magit-status)
-           ("C-c M-g" . magit-dispatch))
-    )
-
   (use-package yasnippet
     :ensure t
     :commands yas-minor-mode
