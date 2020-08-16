@@ -288,32 +288,6 @@
     (counsel-projectile-mode 1)
     )
 
-  (use-package treemacs
-    :ensure t
-    :defer t
-    :bind (("M-0"       . treemacs-select-window)
-           ("C-c t 1"   . treemacs-delete-other-windows)
-           ("C-c t C-t" . treemacs-find-file)
-           ("M-t t"     . treemacs))
-    )
-
-  (use-package treemacs-icons-dired
-    :ensure t
-    :after (dired treemacs)
-    :config
-    (treemacs-icons-dired-mode 1)
-    )
-
-  (use-package treemacs-magit
-    :ensure t
-    :after (magit treemacs)
-    )
-
-  (use-package treemacs-projectile
-    :ensure t
-    :after (projectile treemacs)
-    )
-
   (use-package yasnippet
     :ensure t
     :commands yas-minor-mode
