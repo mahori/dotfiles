@@ -12,6 +12,7 @@ case ${UID} in
         ;;
 esac
 
+alias ls='ls -CFG'
 alias ll='ls -Alo'
 
 source ${HOME}/.zsh/kc.zsh

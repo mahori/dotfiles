@@ -11,4 +11,5 @@ case ${UID} in
         ;;
 esac
 
+alias ls='ls -CF --color'
 alias ll='ls -Al'
