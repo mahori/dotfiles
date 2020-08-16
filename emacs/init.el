@@ -262,19 +262,6 @@
     (minimap-window-location 'right)
     )
 
-  (use-package dashboard
-    :ensure t
-    :custom
-    (dashboard-set-heading-icons t)
-    (dashboard-set-file-icons t)
-    (dashboard-set-footer nil)
-    (dashboard-startup-banner 'logo)
-    (dashboard-items '((recents  . 50)
-                       (projects . 10)))
-    :config
-    (dashboard-setup-startup-hook)
-    )
-
   (use-package git-gutter-fringe
     :ensure t
     :bind ("M-t g" . git-gutter-mode)
