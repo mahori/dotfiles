@@ -154,12 +154,6 @@
   :bind ("C-x C-b" . ibuffer)           ; list-buffers
   )
 
-(use-package paren
-  :commands show-paren-mode
-  :config
-  (setq show-paren-style 'expression)
-  )
-
 (when (and (eq system-type 'darwin)
            (>= (user-uid) 1000))
   (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil))
