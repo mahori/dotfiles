@@ -12,7 +12,7 @@ export ORACLE_HOME_TOKYO="${HOME}/local/oracle-tokyo"
 export ORACLE_HOME="${ORACLE_HOME_OSAKA}"
 export ORACLE_PATH="${HOME}/local/oracle"
 export DYLD_LIBRARY_PATH="${ORACLE_PATH}${DYLD_LIBRARY_PATH+:}${DYLD_LIBRARY_PATH}"
-export PATH="${HOME}/bin:${CPAN_HOME}/bin:${GEM_HOME}/bin:${ORACLE_PATH}:/usr/local/opt/ruby@2.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/libexec"
+export PATH="${HOME}/bin:${CPAN_HOME}/bin:${GEM_HOME}/bin:${ORACLE_PATH}:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/libexec"
 
 case ${UID} in
     501)
