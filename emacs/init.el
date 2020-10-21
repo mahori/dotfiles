@@ -65,7 +65,7 @@
   :bind (("C-c r" . counsel-recentf)
          :map minibuffer-local-map
          ("C-r" . counsel-minibuffer-history))
-  :config
+  :init
   (counsel-mode 1)
   )
 
