@@ -1,7 +1,6 @@
 (defun mahori:cocoa-emacs-mode-hook ()
   (company-mode 1)
   (show-paren-mode 1)
-  (yas-minor-mode 1)
   (mahori:default-mode-hook)
   )
 
