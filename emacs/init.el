@@ -6,9 +6,13 @@
   (load custom-file))
 
 (require 'package)
-(cl-case system-type
-  ('gnu/linux (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
-  (otherwise (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)))
+(cond ((gnutls-available-p)
+       (when (eq system-type 'gnu/linux)
+         (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+         (setq package-check-signature nil))
+       (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+      (t
+       (add-to-list 'package-archives '("melpa" . "http://www.mirrorservice.org/sites/melpa.org/packages/") t)))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
