@@ -11,6 +11,7 @@
 
 (add-hook 'cperl-mode-hook 'mahori:cocoa-emacs-mode-hook)
 (add-hook 'emacs-lisp-mode-hook 'mahori:cocoa-emacs-mode-hook)
+(add-hook 'php-mode-hook 'mahori:cocoa-emacs-mode-hook)
 (add-hook 'python-mode-hook 'mahori:cocoa-emacs-mode-hook)
 (add-hook 'ruby-mode-hook 'mahori:ruby-mode-hook)
 (add-hook 'sh-mode-hook 'mahori:cocoa-emacs-mode-hook)
