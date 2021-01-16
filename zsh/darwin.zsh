@@ -7,12 +7,9 @@ export PERL_MB_OPT="--install_base \"${CPAN_HOME}\""
 export PERL_MM_OPT="INSTALL_BASE=${CPAN_HOME}"
 export PYTHONUSERBASE="${HOME}/local/python"
 export GEM_HOME="${HOME}/local/ruby"
-export ORACLE_HOME_OSAKA="${HOME}/local/oracle-osaka"
-export ORACLE_HOME_TOKYO="${HOME}/local/oracle-tokyo"
-export ORACLE_HOME="${ORACLE_HOME_OSAKA}"
-export ORACLE_PATH="${HOME}/local/oracle"
-export DYLD_LIBRARY_PATH="${ORACLE_PATH}${DYLD_LIBRARY_PATH+:}${DYLD_LIBRARY_PATH}"
-export PATH="${HOME}/bin:${CPAN_HOME}/bin:${GEM_HOME}/bin:${ORACLE_PATH}:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/libexec"
+export ORACLE_HOME="${HOME}/local/oracle"
+export DYLD_LIBRARY_PATH="${ORACLE_HOME}${DYLD_LIBRARY_PATH+:}${DYLD_LIBRARY_PATH}"
+export PATH="${HOME}/bin:${CPAN_HOME}/bin:${GEM_HOME}/bin:${ORACLE_HOME}:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/libexec"
 
 case ${UID} in
     501)
