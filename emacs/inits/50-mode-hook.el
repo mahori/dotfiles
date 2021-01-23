@@ -1,7 +1,5 @@
 (defun mahori:default-mode-hook ()
-  (auto-revert-mode 1)
   (display-line-numbers-mode 1)
-  (hl-line-mode 1)
   )
 
 (defun mahori:dns-mode-hook ()

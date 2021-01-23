@@ -97,19 +97,6 @@
   :bind ("M-;" . comment-dwim-2)        ; comment-dwim
   )
 
-(use-package expand-region
-  :ensure t
-  :bind ("C-=" . er/expand-region)
-  )
-
-(use-package multiple-cursors
-  :ensure t
-  :bind (("C-S-c C-S-c" . mc/edit-lines)
-         ("C-<"         . mc/mark-previous-like-this)
-         ("C->"         . mc/mark-next-like-this)
-         ("C-c C-<"     . mc/mark-all-like-this))
-  )
-
 (use-package recentf-ext
   :ensure t
   :config
@@ -134,12 +121,6 @@
          ("C-M-s" . vr/isearch-forward)) ; isearch-forward-regexp
   :config
   (setq vr/engine 'pcre2el)
-  )
-
-(use-package which-key
-  :ensure t
-  :config
-  (which-key-mode 1)
   )
 
 (use-package display-line-numbers
@@ -204,11 +185,30 @@
     (all-the-icons-ibuffer-mode 1)
     )
 
+  (use-package expand-region
+    :ensure t
+    :bind ("C-=" . er/expand-region)
+    )
+
   (use-package minimap
     :ensure t
     :bind ("M-t m" . minimap-mode)
     :custom
     (minimap-window-location 'right)
+    )
+
+  (use-package multiple-cursors
+    :ensure t
+    :bind (("C-S-c C-S-c" . mc/edit-lines)
+           ("C-<"         . mc/mark-previous-like-this)
+           ("C->"         . mc/mark-next-like-this)
+           ("C-c C-<"     . mc/mark-all-like-this))
+    )
+
+  (use-package which-key
+    :ensure t
+    :config
+    (which-key-mode 1)
     )
 
   (use-package dired
