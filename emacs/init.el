@@ -142,11 +142,6 @@
   (which-key-mode 1)
   )
 
-(use-package zzz-to-char
-  :ensure t
-  :bind ("M-z" . zzz-to-char)           ; zap-to-char
-  )
-
 (use-package display-line-numbers
   :bind ("M-t l" . display-line-numbers-mode)
   )
