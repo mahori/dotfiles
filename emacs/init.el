@@ -98,7 +98,8 @@
 
 (use-package visual-regexp
   :ensure t
-  :bind ("M-%" . vr/query-replace)      ; query-replace
+  :bind (("M-%"   . vr/query-replace)   ; query-replace
+         ("C-c m" . vr/mc-mark))
   )
 
 (use-package pcre2el
@@ -109,8 +110,6 @@
 (use-package visual-regexp-steroids
   :ensure t
   :after (pcre2el visual-regexp)
-  :bind (("C-M-r" . vr/isearch-backward) ; isearch-backward-regexp
-         ("C-M-s" . vr/isearch-forward)) ; isearch-forward-regexp
   :config
   (setq vr/engine 'pcre2el)
   )
