@@ -73,14 +73,6 @@
   (counsel-mode 1)
   )
 
-(use-package ivy-rich
-  :ensure t
-  :after (counsel ivy)
-  :config
-  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-  (ivy-rich-mode 1)
-  )
-
 (use-package swiper
   :ensure t
   :bind ("C-c s" . swiper)
@@ -163,13 +155,6 @@
     :ensure t
     :after (all-the-icons ivy)
     :hook (after-init . all-the-icons-ivy-setup)
-    )
-
-  (use-package all-the-icons-ivy-rich
-    :ensure t
-    :after (all-the-icons ivy ivy-rich)
-    :init
-    (all-the-icons-ivy-rich-mode 1)
     )
 
   (use-package all-the-icons-dired
