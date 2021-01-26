@@ -146,6 +146,13 @@
     :commands company-mode
     )
 
+  (use-package ivy-rich
+    :ensure t
+    :after ivy
+    :init
+    (ivy-rich-mode 1)
+    )
+
   (use-package all-the-icons
     :ensure t
     )
@@ -154,6 +161,13 @@
     :ensure t
     :after (all-the-icons ivy)
     :hook (after-init . all-the-icons-ivy-setup)
+    )
+
+  (use-package all-the-icons-ivy-rich
+    :ensure t
+    :after (all-the-icons ivy-rich)
+    :init
+    (all-the-icons-ivy-rich-mode 1)
     )
 
   (use-package all-the-icons-dired
