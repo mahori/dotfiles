@@ -21,6 +21,7 @@
             (setcdr pair 'cperl-mode)))
         (append auto-mode-alist interpreter-mode-alist))
 
+  (add-hook 'c++-mode-hook 'mahori:cocoa-emacs-mode-hook)
   (add-hook 'cperl-mode-hook 'mahori:cocoa-emacs-mode-hook)
   (add-hook 'emacs-lisp-mode-hook 'mahori:cocoa-emacs-mode-hook)
   (add-hook 'makefile-mode-hook 'mahori:cocoa-emacs-mode-hook)
