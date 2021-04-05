@@ -15,3 +15,15 @@
 (add-hook 'etc-sudoers-generic-mode-hook 'mahori:default-mode-hook)
 (add-hook 'hosts-generic-mode-hook 'mahori:default-mode-hook)
 (add-hook 'm4-mode-hook 'mahori:default-mode-hook)
+
+(when (file-exists-p "/usr/bin/docker")
+  (use-package dockerfile-mode
+    :ensure t
+    :hook (dockerfile-mode . mahori:default-mode-hook)
+    )
+
+  (use-package docker-compose-mode
+    :ensure t
+    :hook (docker-compose-mode . mahori:default-mode-hook)
+    )
+  )
