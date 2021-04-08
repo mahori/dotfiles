@@ -209,6 +209,22 @@
     (which-key-mode 1)
     )
 
+  (use-package yasnippet
+    :ensure t
+    :commands yas-minor-mode
+    )
+
+  (use-package yasnippet-snippets
+    :ensure t
+    :after yasnippet
+    )
+
+  (use-package ivy-yasnippet
+    :ensure t
+    :after (ivy yasnippet)
+    :bind ("C-c y" . ivy-yasnippet)
+    )
+
   (use-package dired
     :commands (dired dired-other-frame dired-other-window)
     :config
