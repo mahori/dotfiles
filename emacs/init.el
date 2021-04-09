@@ -110,8 +110,8 @@
 (use-package visual-regexp-steroids
   :ensure t
   :after (pcre2el visual-regexp)
-  :config
-  (setq vr/engine 'pcre2el)
+  :custom
+  (vr/engine 'pcre2el)
   )
 
 (use-package display-line-numbers
@@ -131,13 +131,14 @@
 
   (use-package migemo
     :ensure t
+    :custom
+    (migemo-coding-system 'utf-8-unix)
+    (migemo-command "/usr/local/bin/cmigemo")
+    (migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
+    (migemo-options '("-q" "--emacs"))
+    (migemo-regex-dictionary nil)
+    (migemo-user-dictionary nil)
     :config
-    (setq migemo-coding-system 'utf-8-unix)
-    (setq migemo-command "/usr/local/bin/cmigemo")
-    (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
-    (setq migemo-options '("-q" "--emacs"))
-    (setq migemo-regex-dictionary nil)
-    (setq migemo-user-dictionary nil)
     (migemo-init)
     )
 
@@ -267,7 +268,8 @@
 
 (use-package init-loader
   :ensure t
+  :custom
+  (init-loader-show-log-after-init 'error-only)
   :config
-  (setq init-loader-show-log-after-init 'error-only)
   (init-loader-load)
   )
