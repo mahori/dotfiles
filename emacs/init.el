@@ -46,8 +46,7 @@
 
 (use-package doom-modeline
   :ensure t
-  :init
-  (doom-modeline-mode 1)
+  :hook (after-init . doom-modeline-mode)
   )
 
 (use-package amx
@@ -56,11 +55,11 @@
 
 (use-package ivy
   :ensure t
+  :hook (after-init . ivy-mode)
   :custom
   (ivy-use-virtual-buffers t)
   :config
   (setq enable-recursive-minibuffers t)
-  (ivy-mode 1)
   )
 
 (use-package counsel
@@ -69,8 +68,7 @@
   :bind (("C-c r" . counsel-recentf)
          :map minibuffer-local-map
          ("C-r" . counsel-minibuffer-history))
-  :init
-  (counsel-mode 1)
+  :hook (ivy-mode . counsel-mode)
   )
 
 (use-package swiper
@@ -91,9 +89,9 @@
 
 (use-package recentf-ext
   :ensure t
+  :hook (after-init . recentf-mode)
   :config
   (setq recentf-max-saved-items (* recentf-max-saved-items 10))
-  (recentf-mode 1)
   )
 
 (use-package visual-regexp
@@ -150,8 +148,7 @@
   (use-package ivy-rich
     :ensure t
     :after ivy
-    :init
-    (ivy-rich-mode 1)
+    :hook (ivy-mode . ivy-rich-mode)
     )
 
   (use-package all-the-icons
@@ -161,7 +158,7 @@
   (use-package all-the-icons-ivy
     :ensure t
     :after (all-the-icons ivy)
-    :hook (after-init . all-the-icons-ivy-setup)
+    :hook (ivy-mode . all-the-icons-ivy-setup)
     )
 
   (use-package all-the-icons-ivy-rich
@@ -180,8 +177,7 @@
   (use-package all-the-icons-ibuffer
     :ensure t
     :after (all-the-icons ibuffer)
-    :init
-    (all-the-icons-ibuffer-mode 1)
+    :hook (ibuffer-mode . all-the-icons-ibuffer-mode)
     )
 
   (use-package expand-region
@@ -226,8 +222,7 @@
 
   (use-package which-key
     :ensure t
-    :config
-    (which-key-mode 1)
+    :hook (after-init . which-key-mode)
     )
 
   (use-package yasnippet
