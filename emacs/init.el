@@ -188,6 +188,26 @@
     :bind ("C-=" . er/expand-region)
     )
 
+  (use-package irony
+    :ensure t
+    :commands irony-mode
+    :hook (irony-mode . irony-cdb-autosetup-compile-options)
+    )
+
+  (use-package company-irony
+    :ensure t
+    :after (company irony)
+    :init
+    (add-to-list 'company-backends 'company-irony)
+    )
+
+  (use-package company-irony-c-headers
+    :ensure t
+    :after company-irony
+    :init
+    (add-to-list 'company-backends 'company-irony-c-headers)
+    )
+
   (use-package minimap
     :ensure t
     :bind ("M-t m" . minimap-mode)

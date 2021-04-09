@@ -8,6 +8,11 @@
     (mahori:default-mode-hook)
     )
 
+  (defun mahori:irony-mode-hook ()
+    (irony-mode 1)
+    (mahori:cocoa-emacs-mode-hook)
+    )
+
   (defun mahori:ruby-mode-hook ()
     (setq ruby-deep-indent-paren-style nil)
     (mahori:cocoa-emacs-mode-hook)
@@ -23,7 +28,8 @@
             (setcdr pair 'cperl-mode)))
         (append auto-mode-alist interpreter-mode-alist))
 
-  (add-hook 'c++-mode-hook 'mahori:cocoa-emacs-mode-hook)
+  (add-hook 'c-mode-hook 'mahori:irony-mode-hook)
+  (add-hook 'c++-mode-hook 'mahori:irony-mode-hook)
   (add-hook 'cperl-mode-hook 'mahori:cocoa-emacs-mode-hook)
   (add-hook 'emacs-lisp-mode-hook 'mahori:cocoa-emacs-mode-hook)
   (add-hook 'makefile-mode-hook 'mahori:cocoa-emacs-mode-hook)
