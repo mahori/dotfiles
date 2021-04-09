@@ -35,7 +35,7 @@
 (define-prefix-command 'mahori:toggle-map)
 (bind-keys ("C-c a" . align)
            ("C-c l" . sort-lines)
-           ("M-t"   . mahori:toggle-map)) ; transpose-words
+           ("M-t"   . mahori:toggle-map))
 
 (use-package doom-themes
   :ensure t
@@ -80,13 +80,13 @@
 
 (use-package avy
   :ensure t
-  :bind (("C-h" . avy-goto-line)        ; help-command
-         ("C-t" . avy-goto-char-timer)) ; transpose-chars
+  :bind (("C-h" . avy-goto-line)
+         ("C-t" . avy-goto-char-timer))
   )
 
 (use-package comment-dwim-2
   :ensure t
-  :bind ("M-;" . comment-dwim-2)        ; comment-dwim
+  :bind ("M-;" . comment-dwim-2)
   )
 
 (use-package recentf-ext
@@ -98,7 +98,7 @@
 
 (use-package visual-regexp
   :ensure t
-  :bind (("M-%"   . vr/query-replace)   ; query-replace
+  :bind (("M-%"   . vr/query-replace)
          ("C-c m" . vr/mc-mark))
   )
 
@@ -122,7 +122,7 @@
   )
 
 (use-package ibuffer
-  :bind ("C-x C-b" . ibuffer)           ; list-buffers
+  :bind ("C-x C-b" . ibuffer)
   )
 
 (when (and (eq system-type 'darwin)
