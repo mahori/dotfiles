@@ -220,6 +220,17 @@
            ("C-c C-<"     . mc/mark-all-like-this))
     )
 
+  (use-package projectile
+    :ensure t
+    :bind (:map projectile-mode-map
+                ("C-c p" . projectile-command-map))
+    )
+
+  (use-package counsel-projectile
+    :ensure t
+    :bind ("M-t p" . counsel-projectile-mode)
+    )
+
   (use-package which-key
     :ensure t
     :hook (after-init . which-key-mode)
