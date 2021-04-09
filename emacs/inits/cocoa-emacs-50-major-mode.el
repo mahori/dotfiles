@@ -18,6 +18,10 @@
     (mahori:cocoa-emacs-mode-hook)
     )
 
+  (use-package cmake-mode
+    :ensure t
+    )
+
   (use-package php-mode
     :ensure t
     :hook (php-mode . mahori:cocoa-emacs-mode-hook)
@@ -30,6 +34,7 @@
 
   (add-hook 'c-mode-hook 'mahori:irony-mode-hook)
   (add-hook 'c++-mode-hook 'mahori:irony-mode-hook)
+  (add-hook 'cmake-mode-hook 'mahori:cocoa-emacs-mode-hook)
   (add-hook 'cperl-mode-hook 'mahori:cocoa-emacs-mode-hook)
   (add-hook 'emacs-lisp-mode-hook 'mahori:cocoa-emacs-mode-hook)
   (add-hook 'makefile-mode-hook 'mahori:cocoa-emacs-mode-hook)
